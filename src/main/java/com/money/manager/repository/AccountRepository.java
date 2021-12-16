@@ -4,21 +4,18 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import com.money.manager.dto.ClientDTO;
+import com.money.manager.dto.AccountDTO;
 
-public class ClientRepository {
+@Repository
+public class AccountRepository {
 	@Autowired
 	private SqlSessionTemplate sql;
 	
-	public void join(ClientDTO cDTO) {
+	public List<AccountDTO> findAll() {
 		// TODO Auto-generated method stub
-		sql.insert("Client.join", cDTO);
-	}
-
-	public List<ClientDTO> findAll() {
-		// TODO Auto-generated method stub
-		return sql.selectList("Client.findAll");
+		return sql.selectList("Account.findAll");
 	}
 
 }

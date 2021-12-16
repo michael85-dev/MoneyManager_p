@@ -1,7 +1,10 @@
 package com.money.manager.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,5 +30,13 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 		cs.join(cDTO);
 		
 		return "main";
+	}
+	
+	@RequestMapping(value="findAll", method=RequestMethod.GET)
+	public String findAll(Model model) {
+		List<ClientDTO> cList = cs.findAll();
+		model.addAttribute("cList", cList);
+		
+		return "/client/findAll";
 	}
 }

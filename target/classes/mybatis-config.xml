@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases> 
 		<typeAlias type="com.money.manager.dto.ClientDTO" alias="cDTO"/>
+		<typeAlias type="com.money.manager.dto.AccountDTO" alias="aDTO"/>
 	</typeAliases>
 </configuration>

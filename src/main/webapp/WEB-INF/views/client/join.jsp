@@ -24,12 +24,12 @@
 	<div>
 		<div class="row">
 		<form action="join" method="post">
-			<input type="text" name="c_id" placeholder="아이디 입력하세요.">
-			<input type="password" name="c_password" id="pwd" placeholder="특수문자를 포함하여 8자 이상의 비밀번호를 입력하세요." onblur="pwdCheck()" maxlength="20"> <span id="pwdCheck"></span>
-			<input type="password" name="pwdCheck" id="pwdRCheck" placeholder="비밀번호를 한번 더 입력하세요" onblur="pwdRCheck()" maxlength="20"> <span id="pwdRepeatCheck"></span>
-			<input type="text" name="c_name" placeholder="이름을 입력하세요.">
-			<input type="text" name="c_nickname" placeholder="사용할 닉네임을 입력하세요.">
-			<input type="text" name="c_email" placeholder="이메일">@<input type="text" id="domain" name="domain">
+			아이디 : <input type="text" name="c_id" placeholder="아이디 입력하세요.">
+			비밀번호 : <input type="password" name="c_password" id="pwd" placeholder="특수문자를 포함하여 8자 이상의 비밀번호를 입력하세요." onblur="pwdCheck()" maxlength="20"> <span id="pwdCheck"></span>
+			비밀번호 확인 : <input type="password" name="pwdCheck" id="pwdRCheck" placeholder="비밀번호를 한번 더 입력하세요" onblur="pwdRCheck()" maxlength="20"> <span id="pwdRepeatCheck"></span>
+			이름 : <input type="text" name="c_name" placeholder="이름을 입력하세요.">
+			닉네임 : <input type="text" name="c_nickname" placeholder="사용할 닉네임을 입력하세요.">
+			이메일 : <input type="text" name="c_email" placeholder="이메일">@<input type="text" id="domain" name="domain">
 				<select id="email_check" onchange="emailSelect()">
 					<option selected>선택하세요</option>
 					<option value="naver.com">naver.com</option>
@@ -37,7 +37,7 @@
 					<option value="hanmail.net">hanmail.net</option>
 					<option value="daum.net">daum.net</option>
 				</select>
-			<input type="file" name="c_photo"> <!-- 미정 -->
+			이모티콘? <input type="file" name="c_photo"> <!-- 미정 -->
 			<input type="submit" value="회원가입"> <!-- 해당 부분에 함수를 넣어서 pwd에 문제가 없을 경우에만 작동하도록  -->
 		</form>
 		</div>
