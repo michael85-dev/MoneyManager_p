@@ -25,8 +25,10 @@
 	<div class="col-3">
 	</div>
 	<div class="col text-end">
-		<button class="btn btn-outline-primary" onclick="location.href='./client/findAll'">회원조회</button><!-- 관리자 -->
-		<button class="btn btn-outline-primary" onclick="location.href='./client/detail'">개인정보조회</button>
+		<c:if test="${sessionScope.loginId eq ??}">
+			<button class="btn btn-outline-primary" onclick="location.href='./client/findAll'">회원목록조회</button><!-- 관리자 -->
+		</c:if>
+		<button class="btn btn-outline-primary" onclick="location.href='./detailform'">개인정보조회</button>
 		<button class="btn btn-outline-primary" onclick="location.href='./client/logout'">로그아웃</button>
 	</div>
 </div>
@@ -137,8 +139,29 @@
 	</div>
 </header>
 <section>
-	<div>
-	
+	<div class="row">
+		<div class="col-6">
+			<div class="container d-flex align-items-center py-3">
+				1
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="container d-flex align-items-center py-3">
+				2
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<div class="container d-flex align-items-center py-3">
+				3
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="container d-flex align-items-center py-3">
+				4
+			</div>
+		</div>
 	</div>
 </section>
 </body>

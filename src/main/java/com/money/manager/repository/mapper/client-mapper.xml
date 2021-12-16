@@ -10,5 +10,14 @@
  	<select id="findAll" resultType="cDTO">
  		select * from client_table
  	</select>
+ 	<select id="detail" parameterType="long" resultType="cDTO">
+ 		select * from client_table where c_number = #{c_number}
+ 	</select>
+ 	<update id="update" parameterType="cDTO">
+ 		update client_table set c_password = #{c_password}, c_nickname = #{c_nickname}, c_email = #{c_email} where c_number = #{c_number}
+ 	</update>
+ 	<delete id="delete" parameterType="long">
+ 		delete from client_table where c_number = #{c_number}
+ 	</delete>
  	
  </mapper>

@@ -10,4 +10,10 @@ public interface ClientService {
 
 	List<ClientDTO> findAll();
 
+	ClientDTO detail(long c_number);
+
+	void update(ClientDTO cDTO);
+
+	void delete(long c_number);
+
 }

@@ -23,7 +23,7 @@
 	<h2>회원가입</h2>
 	<div>
 		<div class="row">
-		<form action="join" method="post">
+		<form action="join" method="post" enctype="Multipart/form-data">
 			아이디 : <input type="text" name="c_id" placeholder="아이디 입력하세요.">
 			비밀번호 : <input type="password" name="c_password" id="pwd" placeholder="특수문자를 포함하여 8자 이상의 비밀번호를 입력하세요." onblur="pwdCheck()" maxlength="20"> <span id="pwdCheck"></span>
 			비밀번호 확인 : <input type="password" name="pwdCheck" id="pwdRCheck" placeholder="비밀번호를 한번 더 입력하세요" onblur="pwdRCheck()" maxlength="20"> <span id="pwdRepeatCheck"></span>

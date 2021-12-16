@@ -25,4 +25,22 @@ public class ClientServiceImpl implements ClientService {
 		return cr.findAll();
 	}
 
+	@Override
+	public ClientDTO detail(long c_number) {
+		// TODO Auto-generated method stub
+		return cr.detail(c_number);
+	}
+
+	@Override
+	public void update(ClientDTO cDTO) {
+		// TODO Auto-generated method stub
+		cr.update(cDTO);
+	}
+
+	@Override
+	public void delete(long c_number) {
+		// TODO Auto-generated method stub
+		cr.delete(c_number);
+	}
+
 }

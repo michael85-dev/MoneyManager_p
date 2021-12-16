@@ -31,7 +31,9 @@
 			<h2>메인페이지(index.jsp)</h2>
 		</div>
 		<div class="col text-end">
-			<button class="btn btn-outline-primary" onclick="location.href='./client/findAll'">정보 조</button>
+			<c:if test="${sessionScope.loginId eq ??}">
+				<button class="btn btn-outline-primary" onclick="location.href='./client/findAll'">회원목록조회</button>
+			</c:if>
 			<button class="btn btn-outline-primary" onclick="location.href='./client/joinform'">회원가입</button>
 			<button class="btn btn-outline-primary" onclick="location.href='./client/login'">로그인</button>
 		</div>

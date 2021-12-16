@@ -21,4 +21,19 @@ public class ClientRepository {
 		return sql.selectList("Client.findAll");
 	}
 
+	public ClientDTO detail(long c_number) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("Client.detail", c_number);
+	}
+
+	public void update(ClientDTO cDTO) {
+		// TODO Auto-generated method stub
+		sql.update("Client.update", cDTO);
+	}
+
+	public void delete(long c_number) {
+		// TODO Auto-generated method stub
+		sql.delete("Client.delete", c_number);
+	}
+
 }

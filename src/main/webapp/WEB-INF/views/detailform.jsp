@@ -24,37 +24,24 @@
 
 </header>
 <section>
-	<div class="row">
-		<table class="talle table-dark"> <!-- 항목은 다 보여주고 항목을 선택하면 해당 값에 대해서 보ㅗ여 -->
-			<tr>
-				<th>아이디</th>
-				<th>비밀번호</th>
-				<th>이름</th>
-				<th>닉네임</th>
-				<th>이메일</th>
-				<th>사진</th>
-				<th>상세조회</th>
-				<th>삭제</th>
-			</tr>
-			<c:forEach items="${cList}" var="c">
-				<tr>
-					<td>${cList.c_id}</td>
-					<td>${cList.c_password}</td>
-					<td>${cList.c_name}</td>
-					<td>${cList.c_nickname}</td>
-					<td>${cList.c_email}</td>
-					<td>${cList.c_photoname}</td>
-					<td>
-						<a href="/client/detail?c_number=${c.c_number}">상세조회</a>
-					</td>
-					<td>
-						<a href="/client/delete">삭제</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	
+	<form action="/client/detail" method="get">
+		<input type="hidden" name="c_number" id="pw">
+		비밀번호 확인 : <input type="password" name="c_password" placeholder="비밀번호 확인">
+		<input type="button" value="비밀번호 확인" onClick="pwdCheck()">
+	</form>
 </section>
 </body>
+<script>
+	function pwdCheck() {
+		const pw = document.getElementById('pw').value;
+		const pwDB = '${cDTO.c_password}';
+		console.log('pw');
+		console.log('pwDB');
+		if (pw == pwDB) {
+			update_form.submit();
+		} else {
+			alert('비밀번호가 다릅니다.');
+		}
+	}
+</script>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.ClientDTO;
 import com.money.manager.service.ClientService;
@@ -20,7 +21,7 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 	
 	@RequestMapping(value="joinform", method=RequestMethod.GET)
 	public String joinForm() {
-		System.out.println("joinform 링크 전송 받");
+		System.out.println("joinform 링크 전송 받음");
 		
 		return "/client/join";
 	}
@@ -38,5 +39,36 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 		model.addAttribute("cList", cList);
 		
 		return "/client/findAll";
+	}
+	
+	@RequestMapping(value="detail", method=RequestMethod.GET)
+	public String detail(@RequestParam("c_number") long c_number, Model model) {
+		ClientDTO cDTO = cs.detail(c_number);
+		model.addAttribute("cDTO", cDTO);
+		
+		return "/client/detail";
+	}
+	
+	@RequestMapping(value="updateform", method=RequestMethod.GET)
+	public String updateForm(@RequestParam("c_number") long c_number, Model model) {
+		ClientDTO cDTO = cs.detail(c_number);
+		model.addAttribute("cDTO", cDTO);
+		
+		return "/client/update";
+	}
+	
+	// update 실행. -> 모든 값을 보내기만 하는것
+	@RequestMapping(value="update", method=RequestMethod.POST)
+	public String update(@ModelAttribute ClientDTO cDTO) {
+		cs.update(cDTO);
+		
+		return "redirect:/client/detail?c_number=" + cDTO.getC_number();
+	}
+	
+	@RequestMapping(value="delete", method=RequestMethod.GET)
+	public String delete(@RequestParam("c_number") long c_number) {
+		cs.delete(c_number);
+		
+		return "redirect:/client/findAll";
 	}
 }
