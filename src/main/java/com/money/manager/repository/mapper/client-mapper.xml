@@ -4,8 +4,8 @@
  
  <mapper namespace="Client"> 
  	<insert id="join" parameterType="cDTO">
- 		insert into client_table(c_id, c_password, c_name, c_email) 
- 			values(#{c_id},#{c_password},#{c_name},#{c_email})
+ 		insert into client_table(c_id, c_password, c_name, c_nickname, c_email, c_photoname) 
+ 			values(#{c_id}, #{c_password}, #{c_name}, #{c_nickname}, #{c_email}, #{c_photoname})
  	</insert>
  	
  </mapper>
