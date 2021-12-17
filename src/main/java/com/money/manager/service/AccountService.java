@@ -8,4 +8,6 @@ public interface AccountService {
 
 	List<AccountDTO> findAll();
 
+	void create(AccountDTO aDTO);
+
 }

@@ -1,5 +1,7 @@
 package com.money.manager.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -10,6 +12,6 @@ public class ClientDTO {
 	private String c_name; // 회원 이
 	private String c_nickname; // 사용 닉네
 	private String c_email; // 비밀번호 분실시 사용할 확인용 이메일 
-	private String c_photo; // 사진? 
-	private String c_photoname; // 사진?
+	private MultipartFile c_photo; // 사진? 
+	private String c_pName; // 사진?
 }

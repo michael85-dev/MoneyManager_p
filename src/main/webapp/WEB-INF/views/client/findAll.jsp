@@ -39,7 +39,7 @@
 			<c:forEach items="${cList}" var="c">
 				<tr>
 					<td>${cList.c_id}</td>
-					<td>${cList.c_password}</td>
+					<td>--</td>
 					<td>${cList.c_name}</td>
 					<td>${cList.c_nickname}</td>
 					<td>${cList.c_email}</td>
@@ -53,6 +53,36 @@
 				</tr>
 			</c:forEach>
 		</table>
+	</div>
+	<div>
+		<c:choose>
+			<c:when test="${pDTO.page <= 1 }">
+				[이전]&nbsp;;
+			</c:when>
+			<c:otherwise>
+				<a href="/client/paging?page=${pDTO.page - 1}">이전]]</a>&nbps;
+			</c:otherwise>	
+		</c:choose>
+		
+		<c:forEach begin="${pDTO.startPage }" end="${pDTO.endPage }" var="i" step="1">
+			<c:choose>
+				<c:when test="${i eq pDTO.page }">
+					${i }
+				</c:when>
+				<c:otherwise>
+					<a href="/client/paging?page=${i }">${i }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${pDTO.page >= pDTO.maxPage}">
+				[다음]
+			</c:when>
+			<c:otherwise>
+				<a href="/client/paging?page=${pDTO.page+1 }">[다음]</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
 </section>

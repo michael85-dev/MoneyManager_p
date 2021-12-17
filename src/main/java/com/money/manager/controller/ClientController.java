@@ -1,5 +1,6 @@
 package com.money.manager.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.ClientDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.ClientService;
 
 @Controller
@@ -27,7 +29,7 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 	}
 	
 	@RequestMapping(value="join", method=RequestMethod.POST)
-	public String join(@ModelAttribute ClientDTO cDTO) {
+	public String join(@ModelAttribute ClientDTO cDTO) throws IllegalStateException, IOException {
 		cs.join(cDTO);
 		
 		return "main";
@@ -59,7 +61,7 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 	
 	// update 실행. -> 모든 값을 보내기만 하는것
 	@RequestMapping(value="update", method=RequestMethod.POST)
-	public String update(@ModelAttribute ClientDTO cDTO) {
+	public String update(@ModelAttribute ClientDTO cDTO) throws IllegalStateException, IOException {
 		cs.update(cDTO);
 		
 		return "redirect:/client/detail?c_number=" + cDTO.getC_number();
@@ -71,4 +73,16 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 		
 		return "redirect:/client/findAll";
 	}
+	
+	@RequestMapping(value="paging", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model) {
+		PageDTO pDTO = cs.paging(page);
+		List<ClientDTO> cList = cs.pagingList(page);
+		model.addAttribute("pDTO", pDTO);
+		model.addAttribute("cList", cList);
+		
+		return "/client/findAll";
+	}
+	
+//	@RequestMapping(value="search", me) // 후에 처
 }

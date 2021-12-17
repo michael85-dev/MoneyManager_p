@@ -21,22 +21,12 @@
 
 </header>
 <section>
-<div class="row">
-	<div>
+	<div class="row">
+		계좌 목록 설정
 	</div>
-	<div class="text-end">
-		 <button class="btn btn-primary" onclick="location.href='./account/createform'">계좌 생성</button>
+	<div class="row">
+		계좌 세부 사항 설정
 	</div>
-</div>
-<div class="row"> <!-- list 생성 -->
-	<div class="col-3">
-		계좌 목록
-	</div>
-	<div class="col-9">
-		계좌 항목들
-	</div>
-</div>
 </section>
-
 </body>
 </html>

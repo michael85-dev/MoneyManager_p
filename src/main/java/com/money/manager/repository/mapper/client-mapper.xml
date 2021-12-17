@@ -19,5 +19,11 @@
  	<delete id="delete" parameterType="long">
  		delete from client_table where c_number = #{c_number}
  	</delete>
+ 	<select id="count" resultType="int">
+ 		select count(c_number) from client_table
+ 	</select>
+ 	<select id="pagingList" parameterType="java.util.HashMap" resultType="cDTO">
+ 		select * from client_table order by c_number desc limit #{start}, #{limit}
+ 	</select>
  	
  </mapper>
