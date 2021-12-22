@@ -47,4 +47,9 @@ public class ClientRepository {
 		return sql.selectList("Client.pList", pagingParam);
 	}
 
+	public ClientDTO login(ClientDTO cDTO) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("Client.login", cDTO);
+	}
+
 }

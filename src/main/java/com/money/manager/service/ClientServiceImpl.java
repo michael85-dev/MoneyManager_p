@@ -29,7 +29,7 @@ public class ClientServiceImpl implements ClientService {
 		System.out.println("c_pName : " + c_pName);
 		
 		//파일저장
-		String savePath = "/Users/myungha/Desktop/Github/MoneyManager/src/main/webapp/resources" + c_pName;
+		String savePath = "/Users/myungha/Desktop/Github/MoneyManager/src/main/webapp/resources/upload" + c_pName;
 		
 		if (!c_photo.isEmpty()) {
 			c_photo.transferTo(new File(savePath));
@@ -116,6 +116,12 @@ public class ClientServiceImpl implements ClientService {
 		}
 		
 		return pList;
+	}
+
+	@Override
+	public ClientDTO login(ClientDTO cDTO) {
+		// TODO Auto-generated method stub
+		return cr.login(cDTO);
 	}
 
 }

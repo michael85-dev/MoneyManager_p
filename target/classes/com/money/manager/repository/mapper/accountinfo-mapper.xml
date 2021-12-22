@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="AccountInfo">
+ 	<select id="detail" parameterType="long" resultType="aiDTO">
+ 		select * from accountInfo_table where a_number = #{a_number}
+ 	</select>
+ 	<insert id="create" parameterType="aiDTO">
+ 		insert into accountinfo_table (a_number, a_bank, ai_name, ai_nName, ai_info, ai_memo, ai_iRate, ai_pNamem ai_mAsset)
+ 			values (#{a_number}, #{a_bank}, #{ai_name}, #{ai_nName}, #{ai_info}, #{ai_memo}, #{ai_iRate}, #ai_pName, #{ai_mAsset})
+ 	</insert>
+ </mapper>

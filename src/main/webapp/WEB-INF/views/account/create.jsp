@@ -22,14 +22,12 @@
 </header>
 <section>
 	<form action="/account/create" method="post">
-		<!-- 고객 정보를 어떻게 가져와야하는가? 페이지화? --> <input type="hidden" name="c_number" value="${cDTO.c_number }">
+		<!-- 고객 정보를 어떻게 가져와야하는가? 페이지화? --> <input type="hidden" name="c_number" value="${cDTO.c_number}">
 		은행명 :  <input type="text" name="a_bank" id="bank" onblur="bCheck()"><span id="bCheck"></span>
 		은행정보 : <input type="text" name="a_info">
-		메모 : <input type="text" name="a_memo">
-		총 자산 : <input type="text" name="a_tAsset">
-		총 수익 : <input type="text" name="a_pAsset">
-		총 지출 : <input type="text" name="a_mAsset">
-		사진 : <input type="file" name="a_pName">
+		메모 : <textarea name="a_memo" rows="5"></textarea>
+		초기금액 : <input type="text" name="a_tAsset">
+		사진 : <input type="file" name="a_photo">
 		<input type="submit" value="저장">
 	</form>
 </section>

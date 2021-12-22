@@ -3,6 +3,8 @@ package com.money.manager.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.money.manager.dto.AccountDTO;
 import com.money.manager.dto.ClientDTO;
 import com.money.manager.dto.PageDTO;
+import com.money.manager.service.AccountService;
 import com.money.manager.service.ClientService;
 
 @Controller
@@ -20,19 +24,38 @@ import com.money.manager.service.ClientService;
 public class ClientController { // 회원가입 요청을 위한 링크를 받는 메서드
 	@Autowired
 	private ClientService cs;
-	
-	@RequestMapping(value="joinform", method=RequestMethod.GET)
-	public String joinForm() {
-		System.out.println("joinform 링크 전송 받음");
-		
-		return "/client/join";
-	}
+	@Autowired
+	private HttpSession session;
+	@Autowired
+	private AccountService as;
 	
 	@RequestMapping(value="join", method=RequestMethod.POST)
 	public String join(@ModelAttribute ClientDTO cDTO) throws IllegalStateException, IOException {
 		cs.join(cDTO);
 		
 		return "main";
+	}
+	
+	@RequestMapping(value="login", method=RequestMethod.POST)
+	public String login(@ModelAttribute ClientDTO cDTO, @ModelAttribute AccountDTO aDTO, Model model) {
+		System.out.println("login 데이터 전송 요청 됨");
+		List<ClientDTO> cList = cs.findAll();
+		
+		ClientDTO client = cs.login(cDTO);
+		AccountDTO account = as.login(aDTO);
+		
+		if (client != null) {
+			session.setAttribute("logId", cDTO.getC_nickname());
+			session.setAttribute("cNum", cDTO.getC_number());
+			session.setAttribute("aNum", aDTO.getA_number());
+			model.addAttribute("cList", cList);
+			
+			return "main";
+		
+		} else {
+			return "/client/login";
+		}
+		
 	}
 	
 	@RequestMapping(value="findAll", method=RequestMethod.GET)

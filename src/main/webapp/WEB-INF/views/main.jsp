@@ -25,7 +25,7 @@
 	<div class="col-3">
 	</div>
 	<div class="col text-end">
-		<c:if test="${sessionScope.loginId eq ??}">
+		<c:if test="${sessionScope.cNum eq '1'}">
 			<button class="btn btn-outline-primary" onclick="location.href='./client/findAll'">회원목록조회</button><!-- 관리자 -->
 		</c:if>
 		<button class="btn btn-outline-primary" onclick="location.href='./detailform'">개인정보조회</button>
@@ -51,7 +51,8 @@
 	        </div>
 	        <div class="offcanvas-body">
 	            <ul class="list-group list-group-flush">
-	                <li class="list-group-item" onclick="location.href='./account/findAll'">계좌 생성(Account create)</li>
+	 	            <li class="list-group-item" onclick="location.href='./findAll'">전체보기(Money Manager)</li>
+	                <li class="list-group-item" onclick="location.href='./account/findAll?c_number=${cList.c_number}'">계좌 생성(Account create)</li>
 	                <!-- <div>
 	                    <ul>
 	                        <li>나</li>
@@ -60,14 +61,14 @@
 	                    </ul>
 	                </div> -->
 	                <!-- 원래 -->
-	                <li class="list-group-item" onclick="location.href='./card/findAll'">카드 생성(Card create)</li>
+	                <li class="list-group-item" onclick="location.href='./card/findAll?c_number=${cList.c_number}'">카드 생성(Card create)</li>
 	                <!-- 연습 -->
 	                <!-- <li class="list-group-item">
 	                    <a onclick="skills()" id="skills-toggle" href="./Skills.html">Skills</a>
 	                </li> -->
-	                <li class="list-group-item toggle" onclick="location.href='./account/findAll'">가계부 등록(Money Manager)</li>
+	                <li class="list-group-item" onclick="location.href='./cash/findAll?c_number=${cList.c_number}'">현금 생성(Money Manager)</li>
 	                <!-- <button id="btn" src> -->
-	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
+	                <li class="list-group-item" onclick="location.href='./card/findAll'">카드 등록()</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>

@@ -31,11 +31,11 @@
 			<h2>메인페이지(index.jsp)</h2>
 		</div>
 		<div class="col text-end">
-			<c:if test="${sessionScope.loginId eq ??}">
+			<c:if test="${sessionScope.cNum eq '1'}">
 				<button class="btn btn-outline-primary" onclick="location.href='./client/findAll'">회원목록조회</button>
 			</c:if>
-			<button class="btn btn-outline-primary" onclick="location.href='./client/joinform'">회원가입</button>
-			<button class="btn btn-outline-primary" onclick="location.href='./client/login'">로그인</button>
+			<button class="btn btn-outline-primary" onclick="location.href='./joinform'">회원가입</button>
+			<button class="btn btn-outline-primary" onclick="location.href='./loginform'">로그인</button>
 		</div>
 	</div>
 <!-- 	

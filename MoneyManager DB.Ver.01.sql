@@ -71,11 +71,13 @@ select * from cash_table;
 drop table accountInfo_table;
 create table accountInfo_table (
 	ai_number bigint auto_increment,
+    a_number bigint,
     a_bank varchar(50),
     ai_name varchar(50) NOT NULL,
     ai_nName varchar(50),
     ai_info varchar(100),
     ai_memo varchar(1000),
+    ai_iRate double,
     ai_pName varchar(50),
     ai_tAsset bigint default 0,
     ai_pAsset bigint default 0,
@@ -90,6 +92,8 @@ drop table cardInfo_table;
 create table cardInfo_table (
 	di_number bigint auto_increment,
     d_cCompany varchar(50),
+    d_number bigint,
+    a_bank varchar(50),
     di_name varchar(50) NOT NULL,
     di_nName varchar(50),
     di_info varchar(100),
@@ -99,7 +103,9 @@ create table cardInfo_table (
     di_pAsset bigint default 0,
     di_mAsset bigint default 0,
     constraint primary key(di_number),
-    constraint foreign key(d_cCompany) references card_table(d_cCompany)
+    constraint foreign key(d_cCompany) references card_table(d_cCompany),
+    constraint foreign key(a_bank) references account_table(a_bank),
+    constraint foreign key(d_number) references card_table(d_number)
 );
 
 select * from cardInfo_table;
@@ -121,3 +127,22 @@ create table cashInfo_table (
 );
 
 select * from cardInfo_table;
+
+drop table accountContents_table;
+create table accountContents_table (
+	ai_number bigint,
+    ac_number bigint auto_increment,
+    a_bank varchar(30),
+    ac_info varchar(200),
+    ac_useCon varchar(100),
+    ac_useAcc varchar(100),
+    ac_name varchar(50),
+    ac_nName varchar(50),
+    ac_iRate double default 0,
+    ac_pName varchar(100),
+    ac_tAsset bigint default 0,
+    ac_mAsset bigint default 0,
+    ac_pAsset bigint default 0,
+    constraint primary key(ac_number),
+    constraint foreign key(ai_number) references accountInfo_table(ai_number)
+);

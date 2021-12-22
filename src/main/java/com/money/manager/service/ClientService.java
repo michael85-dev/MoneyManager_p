@@ -22,4 +22,6 @@ public interface ClientService {
 
 	List<ClientDTO> pagingList(int page);
 
+	ClientDTO login(ClientDTO cDTO);
+
 }

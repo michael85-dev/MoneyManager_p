@@ -18,4 +18,24 @@ public class AccountRepository {
 		return sql.selectList("Account.findAll");
 	}
 
+	public void create(AccountDTO aDTO) {
+		// TODO Auto-generated method stub
+		sql.insert("Account.create", aDTO);
+	}
+
+	public AccountDTO detail(long a_number) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("Account.detail", a_number);
+	}
+
+	public void update(long a_number) {
+		// TODO Auto-generated method stub
+		sql.update("Account.update", a_number);
+	}
+
+	public AccountDTO login(AccountDTO aDTO) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("Account.login", aDTO);
+	}
+
 }

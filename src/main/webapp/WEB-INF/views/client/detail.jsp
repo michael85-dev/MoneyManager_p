@@ -49,7 +49,7 @@
 	</div>
 	<div>
 		<c:choose>
-			<c:when test="${sessionScope.loginId eq ??}">
+			<c:when test="${sessionScope.cNum eq '1'}">
 				<input type="text" name="c_number" value="${cDTO.c_number}" readonly>
 			</c:when>
 			<c:otherwise>

@@ -25,5 +25,8 @@
  	<select id="pagingList" parameterType="java.util.HashMap" resultType="cDTO">
  		select * from client_table order by c_number desc limit #{start}, #{limit}
  	</select>
+ 	<select id="login" parameterType="cDTO" resultType="cDTO">
+ 		select * from client_table where c_id = #{c_id} and c_password = #{c_password}
+ 	</select>
  	
  </mapper>

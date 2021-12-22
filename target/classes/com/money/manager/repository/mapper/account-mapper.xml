@@ -6,4 +6,17 @@
  	<select id="findAll" resultType="aDTO">
  		select * from account_table
  	</select>
+ 	<insert id="create" parameterType="aDTO">
+ 		insert into account_table(c_number, a_bank, a_info, a_memo, a_pName, a_tAsset)
+ 			values(#{c_number}, #{a_bank}, #{a_info}, #{a_memo}, #{a_pName}, #{a_tAsset})
+ 	</insert>
+ 	<select id="detail" parameterType="long" resultType="aDTO">
+ 		select * from account_table where a_number = #{a_number}
+ 	</select>
+ 	<update id="update" parameterType="long">
+ 		update account_table set a_bank = #{a_bank}, a_info = #{a_info}, a_memo = #{a_memo}, a_pName = #{a_pName} where a_number = #{a_number}
+ 	</update>
+ 	<select id="login" parameterType="aDTO" resultType="aDTO">
+ 		select * from account_table where a_number = #{a_number} 
+ 	</select>
  </mapper>
