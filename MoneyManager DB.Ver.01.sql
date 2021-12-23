@@ -114,6 +114,7 @@ drop table cashInfo_table;
 create table cashInfo_table (
 	si_number bigint auto_increment,
     s_cash varchar(50),
+    s_number bigint,
     si_name varchar(50),
     si_nName varchar(50),
     si_info varchar(100),
@@ -123,7 +124,8 @@ create table cashInfo_table (
     si_pAsset bigint default 0,
     si_mAsset bigint default 0,
     constraint primary key(si_number),
-    constraint foreign key(s_cash) references cash_table(s_cash)
+    constraint foreign key(s_cash) references cash_table(s_cash),
+    constraint foreign key(s_number) references cash_table(s_number)
 );
 
 select * from cardInfo_table;

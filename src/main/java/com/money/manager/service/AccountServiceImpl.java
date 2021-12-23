@@ -15,9 +15,9 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository ar;
 	
 	@Override
-	public List<AccountDTO> findAll() {
+	public List<AccountDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
-		return ar.findAll();
+		return ar.findAll(c_number);
 	}
 
 	@Override

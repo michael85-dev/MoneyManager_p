@@ -13,9 +13,9 @@ public class AccountRepository {
 	@Autowired
 	private SqlSessionTemplate sql;
 	
-	public List<AccountDTO> findAll() {
+	public List<AccountDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
-		return sql.selectList("Account.findAll");
+		return sql.selectList("Account.findAll", c_number);
 	}
 
 	public void create(AccountDTO aDTO) {

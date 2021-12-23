@@ -21,9 +21,9 @@ public class CardController {
 	private CardService ds;
 	
 	@RequestMapping(value="findAll", method=RequestMethod.GET)
-	public String findAll(Model model) {
+	public String findAll(Model model, @RequestParam("c_number") long c_number) {
 		System.out.println("card.findAll 호출됨");
-		List<CardDTO> dList = ds.findAll();
+		List<CardDTO> dList = ds.findAll(c_number);
 		model.addAttribute("dList", dList);
 		
 		return "/card/findAll";

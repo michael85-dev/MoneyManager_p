@@ -37,9 +37,8 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String login(@ModelAttribute ClientDTO cDTO, @ModelAttribute AccountDTO aDTO, Model model) {
+	public String login(@ModelAttribute ClientDTO cDTO, @RequestParam("c_number") long c_number, @ModelAttribute AccountDTO aDTO, Model model) {
 		System.out.println("login 데이터 전송 요청 됨");
-		List<ClientDTO> cList = cs.findAll();
 		
 		ClientDTO client = cs.login(cDTO);
 		AccountDTO account = as.login(aDTO);
@@ -48,7 +47,6 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 			session.setAttribute("logId", cDTO.getC_nickname());
 			session.setAttribute("cNum", cDTO.getC_number());
 			session.setAttribute("aNum", aDTO.getA_number());
-			model.addAttribute("cList", cList);
 			
 			return "main";
 		
@@ -59,8 +57,8 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 	}
 	
 	@RequestMapping(value="findAll", method=RequestMethod.GET)
-	public String findAll(Model model) {
-		List<ClientDTO> cList = cs.findAll();
+	public String findAll(Model model, @RequestParam("c_number") long c_number) {
+		List<ClientDTO> cList = cs.findAll(c_number);
 		model.addAttribute("cList", cList);
 		
 		return "/client/findAll";

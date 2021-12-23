@@ -17,9 +17,9 @@ public class CardServiceImpl implements CardService {
 	private CardRepository dr;
 	
 	@Override
-	public List<CardDTO> findAll() {
+	public List<CardDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
-		return dr.findAll();
+		return dr.findAll(c_number);
 	}
 
 	@Override

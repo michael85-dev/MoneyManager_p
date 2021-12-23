@@ -41,7 +41,7 @@ public class CardInfoController {
 	public String createForm(@RequestParam("d_number") long d_number, Model model, @RequestParam("a_number") long a_number) { //a_number를 호출해서 A_bank가져오는게 FindAll에 명명 안되어있
 		CardDTO dDTO = ds.detail(d_number);
 		model.addAttribute("dDTO", dDTO); // card의 해당 d_number를 넘기기 위해
-		List<AccountDTO> aList = as.findAll();
+		List<AccountDTO> aList = as.findAll(a_number);
 		model.addAttribute("aList", aList);
 		
 		return "/card/create";

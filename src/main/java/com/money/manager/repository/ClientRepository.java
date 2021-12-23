@@ -17,7 +17,7 @@ public class ClientRepository {
 		sql.insert("Client.join", cDTO);
 	}
 
-	public List<ClientDTO> findAll() {
+	public List<ClientDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
 		return sql.selectList("Client.findAll");
 	}

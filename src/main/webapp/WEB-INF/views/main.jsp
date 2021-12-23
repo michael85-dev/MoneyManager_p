@@ -142,25 +142,97 @@
 <section>
 	<div class="row">
 		<div class="col-6">
+			차트 (원형)
+		</div>
+		<div class="col-6">
+			차트 (막대그래프)
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
 			<div class="container d-flex align-items-center py-3">
-				1
+				계인정보
+				<table>
+					<tr>
+						<th>이름</th>
+						<th>닉네임</th>
+						<th>이메일</th>
+						<th>수정</th>
+					</tr>
+					<tr>
+						<td>${cList.c_name}</td>
+						<td>${cList.c_nickname}</td>
+						<td>${cList.c_email}</td>
+						<td>
+							<a href="/client/update=${cList.c_number}">수정</a>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="container d-flex align-items-center py-3">
-				2
+				현금 관련 정보
+				<table>
+					<tr></tr>
+					<c:forEach items="sList" var="s">
+						<tr></tr>
+					</c:forEach>
+				</table>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-6">
 			<div class="container d-flex align-items-center py-3">
-				3
+				계좌 관련 정보
+				<table>
+					<tr></tr>
+					<c:forEach items="aList" var="a">
+						<tr></tr>
+					</c:forEach>
+				</table>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="container d-flex align-items-center py-3">
-				4
+				카드 관련 정보
+				<table>
+					<tr></tr>
+					<c:forEach items="dList" var="d">
+						<tr></tr>
+					</c:forEach>
+				</table>
+				<div>
+					<c:choose>
+						<c:when test="${pDTO.page <= 1 }">
+							[이전]&nbsp;;
+						</c:when>
+						<c:otherwise>
+							<a href="/client/paging?page=${pDTO.page - 1}">이전]]</a>&nbps;
+						</c:otherwise>	
+					</c:choose>
+					
+					<c:forEach begin="${pDTO.startPage }" end="${pDTO.endPage }" var="i" step="1">
+						<c:choose>
+							<c:when test="${i eq pDTO.page }">
+								${i }
+							</c:when>
+							<c:otherwise>
+								<a href="/client/paging?page=${i }">${i }</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${pDTO.page >= pDTO.maxPage}">
+							[다음]
+						</c:when>
+						<c:otherwise>
+							<a href="/client/paging?page=${pDTO.page+1 }">[다음]</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 		</div>
 	</div>

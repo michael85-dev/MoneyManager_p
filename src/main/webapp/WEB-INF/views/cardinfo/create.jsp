@@ -36,7 +36,7 @@
 		di_nName <input type="text" name="di_nName">
 		di_info <input type="text" name="di_info">
 		di_memo <textarea name="di_memo" rows="5"></textarea>
-		di_pName <input type="text" name="di_nName">
+		di_pName <input type="text" name="di_photo">
 		
 		<select id="asset" onchange="asset()">
 			<option disabled>선택</option>
@@ -44,7 +44,7 @@
 
 				<option value="a_bank">${a.a_bank}</option>
 			</c:forEach>
-		</select>
+		</select> 해당 값을 2개다 INput으로 해서 HIDDen으로 하고 VALue 값을 가지고... 이프문으로 통해서 id가 맞는 곳에 넣어주는 방식으로 하는 것도 괜찮을꺼 같다.
 		di_tAsset 
 		di_pAsset
 		di_mAsset

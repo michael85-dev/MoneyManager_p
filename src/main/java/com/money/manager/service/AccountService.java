@@ -7,7 +7,7 @@ import com.money.manager.dto.AccountDTO;
 
 public interface AccountService {
 
-	List<AccountDTO> findAll();
+	List<AccountDTO> findAll(long c_number);
 
 	void create(AccountDTO aDTO) throws IllegalStateException, IOException;
 

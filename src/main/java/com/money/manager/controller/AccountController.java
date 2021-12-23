@@ -29,9 +29,9 @@ public class AccountController {
 	private AccountInfoService ais;
 	
 	@RequestMapping(value="findAll", method=RequestMethod.GET)
-	public String findAll(Model model) {
+	public String findAll(Model model, @RequestParam("c_number") long c_number) {
 		System.out.println("account.findAll 호출");
-		List<AccountDTO> aList = as.findAll();
+		List<AccountDTO> aList = as.findAll(c_number);
 		model.addAttribute("aList", aList);
 		// tAsset의 값을 어떻게 정릐해야하는지에 대해서 고민해야할 것으로 생각이 됨. create에서ㅕ 처리를 해서 넣어야 할까?
 		List<AccountInfoDTO> aiList = ais.findAll();

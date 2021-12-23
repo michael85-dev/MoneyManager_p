@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.AccountDTO;
+import com.money.manager.dto.CardDTO;
+import com.money.manager.dto.CashDTO;
 import com.money.manager.dto.ClientDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.AccountService;
+import com.money.manager.service.CardService;
+import com.money.manager.service.CashService;
 import com.money.manager.service.ClientService;
 import com.money.manager.service.MainService;
 
@@ -24,6 +29,10 @@ public class MainController {
 	private ClientService cs;
 	@Autowired
 	private AccountService as;
+	@Autowired
+	private CashService ss;
+	@Autowired
+	private CardService ds;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index() {
@@ -74,12 +83,46 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/findAll", method=RequestMethod.GET)
-	public String findAll(Model model) {
+	public String findAll(Model model, @RequestParam("c_number") long c_number) {
 		System.out.println("전체 조회(메인화면) 기능 실행됨");
-		List<AccountDTO> aList = ms.findAllofAccount();
-		List<CardDTO> cList = ms.findAllofCard();
-		List<CashDTO> sList = ms.findAllofCash();
+		List<AccountDTO> aList = as.findAll(c_number);
+		List<CardDTO> dList = ds.findAll(c_number);
+		List<CashDTO> sList = ss.findAll(c_number);
+		List<ClientDTO> cList = cs.findAll(c_number);
+		
+		model.addAttribute("cList", cList);
+		model.addAttribute("aList", aList);
+		model.addAttribute("dList", dList);
+		model.addAttribute("sList", sList);
+		
+		
 		
 		return "findAll";
 	}
+	
+	@RequestMapping(value="paging", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model) {
+		PageDTO pcDTO = cs.paging(page);
+		PageDTO paDTO = as.paging(page);
+		PageDTO pdDTO = ds.paging(page);
+		PageDTO psDTO = ss.paging(page);
+		
+		List<AccountDTO> aList = as.pagingList(page);
+		List<CardDTO> dList = ds.pagingList(page);
+		List<CashDTO> sList = ss.pagingList(page);
+		List<ClientDTO> cList = cs.pagingList(page);
+		
+		model.addAttribute("pcDTO", pcDTO);
+		model.addAttribute("paDTO", paDTO);
+		model.addAttribute("psDTO", psDTO);
+		model.addAttribute("pdDTO", pdDTO);
+		
+		model.addAttribute("cList", cList);
+		model.addAttribute("aList", aList);
+		model.addAttribute("dList", dList);
+		model.addAttribute("sList", sList);
+		
+		return "/client/findAll";
+	}
+	
 }

@@ -17,6 +17,71 @@
 
 </head>
 <body>
+<header>
 
+</header>
+<section>
+cash는 현금성
+cashinfo는 현금성의 상세 내역들로 구성
+
+	<div class="row text-end">
+		<a href="/cash/createform?c_number=${sList.c_number}">현금계좌 생성</a>
+	</div>
+	<div class="row text-end">
+		<a href="/cashinfo/createform?s_number=${sList.s_number}">내역 생성</a>
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<table>
+				<tr>
+					<th>현금명</th>
+					<th>정보</th>
+					<th>현 잔액</th>
+					<th>내역보기</th>
+					<th>속성확인</th>
+					<th>삭제</th>
+				</tr>
+				<c:forEach items="${sList}" var="s">
+					<tr>
+						<td>${s.s_cash}</td>
+						<td>${s.s_info}</td>
+						<td>${s.s_tAsset}</td>
+						<td>
+							<a href="/cashinfo/findAll?s_number=${s.s_number}">내역보기</a>
+						</td>
+						<td>
+							<a href="/cash/detail?s_number=${s.s_number}">보기</a>
+						</td>
+						<td>
+							<a href="/cash/delete?s_number=${s.s_number}">삭제</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div class="col-9">
+			<table>
+				<tr>
+					<th>현금 계좌명</th>
+					<th>호칭</th>
+					<th>수입액</th>
+					<th>지출액</th>
+					<th>상세보기</th>
+				</tr>
+				<c:forEach items="${siList}" var="si">
+					<tr>
+						<td>${si.si_name}</td>
+						<td>${si.si_nName}</td>
+						<td>${si.si_pAsset}</td>
+						<td>${si.si_mAsset}</td>
+						<td>
+							<a href="/cashinfo?detail?si_number=${si.si_number}">보기</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+</section>
 </body>
 </html>

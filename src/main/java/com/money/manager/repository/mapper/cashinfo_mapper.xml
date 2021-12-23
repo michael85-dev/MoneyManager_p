@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="CashInfo">
+ 	<select id="findAll" resultType="siDTO" parameterType="long">
+ 		select * from cashInfo_table where s_number = #{s_number}
+ 	</select>
+ 	<insert id="create" parameterType="siDTO">
+ 		insert into cashInfo_table (s_cash, s_number, si_name, si_nName, si_info, si_memo, si_pName, si_tAsset, si_mAsset, si_pAsset)
+ 			values (#{s_cash}, #{s_number}, #{si_name}, #{si_nName}, #{si_info}, #{si_memo}, #{si_pName}, #{si_tAsset}, #{si_mAsset}, #{si_pAsset})
+ 	</insert>
+ 	<select id="detail" parameterType="long" resultType="siDTO">
+ 		select * from cashInfo_table where si_number = #{si_number}
+ 	</select>
+ </mapper>

@@ -7,8 +7,8 @@
  		insert into client_table(c_id, c_password, c_name, c_nickname, c_email, c_photoname) 
  			values(#{c_id}, #{c_password}, #{c_name}, #{c_nickname}, #{c_email}, #{c_photoname})
  	</insert>
- 	<select id="findAll" resultType="cDTO">
- 		select * from client_table
+ 	<select id="findAll" resultType="cDTO" parameterType="long">
+ 		select * from client_table c_number = #{c_number}
  	</select>
  	<select id="detail" parameterType="long" resultType="cDTO">
  		select * from client_table where c_number = #{c_number}

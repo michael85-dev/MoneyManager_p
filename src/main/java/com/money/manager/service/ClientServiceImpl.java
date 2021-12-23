@@ -40,9 +40,9 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public List<ClientDTO> findAll() {
+	public List<ClientDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
-		return cr.findAll();
+		return cr.findAll(c_number);
 	}
 
 	@Override

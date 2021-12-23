@@ -3,8 +3,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="Card">
- 	<select id="findAll" resultType="dDTO">
- 		select * from card_table
+ 	<select id="findAll" resultType="dDTO" parameterType="long">
+ 		select * from card_table where c_number = #{c_number}
  	</select>
  	<select id="detail" parameterType="long" resultType="dDTO">
  		select * from card_table where d_number = #{d_number}

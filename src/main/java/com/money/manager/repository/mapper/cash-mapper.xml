@@ -6,4 +6,17 @@
  	<select id="findAll" parameterType="long" resultType="sDTO">
  		select * from cash_table where c_number = #{c_number}
  	</select>
+ 	<insert id="create" parameterType="sDTO">
+ 		insert into cash_table (c_number, s_cash, s_info, s_memo, s_pName, s_tAsset, s_pAsset, s_mAsset)
+ 			values (#{c_number}, #{s_cash}, #{s_info}, #{s_memo}, #{s_pName}, #{s_tAsset}, #{s_pAsset}, #{s_mAsset})
+ 	</insert>
+ 	<delete id="delete" parameterType="long">
+ 		delete from cash_table where s_number = #{s_number}
+ 	</delete>
+ 	<select id="detail" parameterType="long" resultType="sDTO">
+ 		select * from cash_table where s_number = #{s_number}
+ 	</select>
+ 	<update id="update" parameterType="sDTO">
+ 		update cash_tabel from s_cash = #{s_cash}, s_info = #{s_info}, s_memo = #{s_memo}, s_pName = #{s_pName}, s_tAsset = #{s_tAsset} where s_number = #{s_number}
+ 	</update>
  </mapper>

@@ -13,9 +13,9 @@ public class CardRepository {
 	@Autowired
 	private SqlSessionTemplate sql;
 
-	public List<CardDTO> findAll() {
+	public List<CardDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
-		return sql.selectList("Card.findAll");
+		return sql.selectList("Card.findAll", c_number);
 	}
 
 	public CardDTO detail(long d_number) {

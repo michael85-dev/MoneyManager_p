@@ -20,29 +20,39 @@
 <header>
 
 </header>
+cashinfo-create
 <section>
-	<form action="/account/create" method="post" enctype="Multipart/form-data">
-		<!-- 고객 정보를 어떻게 가져와야하는가? 페이지화? --> <input type="hidden" name="c_number" value="${cDTO.c_number}">
-		은행명 :  <input type="text" name="a_bank" id="bank" onblur="bCheck()"><span id="bCheck"></span>
-		은행정보 : <input type="text" name="a_info">
-		메모 : <textarea name="a_memo" rows="5"></textarea>
-		초기금액 : <input type="text" name="a_tAsset">
-		사진 : <input type="file" name="a_photo">
-		<input type="submit" value="저장">
+	<form action="cashinfo/create" mehotd="post" enctype="Multipart/form-data">
+		si_number : 자동
+		s_cash 계좌명 <input type="text" name="s_cash" value="${sDTO.s_cash}">
+		s_number <input type="hidden" name="s_number" value="${sDTO.s_number}" readonly>
+		si_name 내역 <input type="text" name="si_name">
+		si_nName
+		si_memo 메모 <textarea name="si_memo" rows="5"></textarea>
+		si_photo 첨부 <input type="file" name="si_photo">
+		
+		이걸 표현하는게 제일 어렵다고 생각되는데.
+		<select id="aCheck">
+			<option value="mAsset">-</option>
+			<option value="pAsset">+</option>
+		</select> 
+		<input type="text" name="pAsset" id="asset" onblur="check()">
+		si_pAsset
+		si_mAsset
 	</form>
 </section>
 </body>
 <script>
-	function bCheck() {
-		const bank = document.getElementById('bank').value;
-		const bLength = bank.length;
-		if (bLength == 0) {
-			bCheck.style.color = 'red';
-			bCheck.innerHTML = '1자 이상 입력하세요.';
+	function check() {
+		const aCheck = document.getElementById('aCheck').value;
+		const asset = document.getElementById('asset');
+		
+		if (aCheck == mAsset) {
+			asset.value = -1 * (asset.value);
 		} else {
-			bCheck.style.color = 'green';
-			bCheck.innerHTML = '사용가능합니다.';
+			asset.value = asset.value;
 		}
+		
 	}
 </script>
 </html>

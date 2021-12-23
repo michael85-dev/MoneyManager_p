@@ -44,7 +44,7 @@
 		<input type="text" name="ai_mAsset"> -->
 		
 		메모 : <textarea name="ai_memo" rows="5"></textarea>
-		사진 : <input type="file" name="ai_pName">
+		사진 : <input type="file" name="ai_photo">
 		
 	</form>
 </section>

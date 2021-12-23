@@ -10,7 +10,7 @@ public interface ClientService {
 
 	void join(ClientDTO cDTO) throws IllegalStateException, IOException;
 
-	List<ClientDTO> findAll();
+	List<ClientDTO> findAll(long c_number);
 
 	ClientDTO detail(long c_number);
 

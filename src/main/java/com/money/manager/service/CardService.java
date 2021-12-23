@@ -7,7 +7,7 @@ import com.money.manager.dto.CardDTO;
 
 public interface CardService {
 
-	List<CardDTO> findAll();
+	List<CardDTO> findAll(long c_number);
 
 	CardDTO detail(long d_number);
 

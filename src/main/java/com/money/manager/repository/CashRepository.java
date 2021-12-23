@@ -18,4 +18,24 @@ public class CashRepository {
 		return sql.selectList("Cash.findAll", c_number);
 	}
 
+	public void create(CashDTO sDTO) {
+		// TODO Auto-generated method stub
+		sql.insert("Cash.create", sDTO);
+	}
+
+	public void delete(long s_number) {
+		// TODO Auto-generated method stub
+		sql.delete("Cash.delete", s_number);
+	}
+
+	public CashDTO detail(long s_number) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("Cash.detail", s_number);
+	}
+
+	public void update(CashDTO sDTO) {
+		// TODO Auto-generated method stub
+		sql.update("Cash.update", sDTO);
+	}
+
 }

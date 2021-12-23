@@ -9,5 +9,6 @@
 		<typeAlias type="com.money.manager.dto.AccountContentsDTO" alias="acDTO"/>
 		<typeAlias type="com.money.manager.dto.CardDTO" alias="dDTO"/>
 		<typeAlias type="com.money.manager.dto.CashDTO" alias="sDTO"/>
+		<typeAlias type="com.money.manager.dto.CashInfoDTO" alias="siDTO"/>
 	</typeAliases>
 </configuration>
