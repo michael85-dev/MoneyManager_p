@@ -1,6 +1,7 @@
 package com.money.manager.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,16 @@ public class CardInfoRepository {
 	public CardInfoDTO detail(long d_number) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("CardInfo.detail", d_number);
+	}
+
+	public int diCount(long d_number) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("CardInfo.count", d_number);
+	}
+
+	public List<CardInfoDTO> pagingList(Map<String, Integer> pagingParam) {
+		// TODO Auto-generated method stub
+		return sql.selectList("CardInfo.pList", pagingParam);
 	}
 	
 	

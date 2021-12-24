@@ -13,4 +13,10 @@
  	<select id="detail" parameterType="long" resultType="ciDTO">
  		select * from cardInfo_table
  	</select>
+ 	<select id="count" parameterType="long" resultType="long">
+ 		select count(di_number) from cardInfo_table where d_number = #{d_number}
+ 	</select>
+ 	<select id="pList" parameterType="java.util.HashMap" resultType="ciDTO">
+ 		select * from  cardInfo_table order by di_number desc limit #{start}, #{limit}
+ 	</select>
  </mapper>

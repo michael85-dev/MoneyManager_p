@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.money.manager.dto.AccountDTO;
 import com.money.manager.dto.AccountInfoDTO;
 import com.money.manager.dto.ClientDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.AccountInfoService;
 import com.money.manager.service.AccountService;
 import com.money.manager.service.ClientService;
@@ -71,5 +72,15 @@ public class AccountController {
 		as.update(a_number);
 		
 		return "redirect:/account/findAll";
+	}
+	
+	@RequestMapping(value="paging", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model, @RequestParam("c_number") long c_number) {
+		PageDTO pDTO =as.paging(page, c_number);
+		List<AccountDTO> aList = as.pagingList(page);
+		model.addAttribute("pDTO", pDTO);
+		model.addAttribute("aList", aList);
+		
+		return "/account/findAll";
 	}
 }

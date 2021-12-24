@@ -19,4 +19,7 @@
  	<update id="update" parameterType="sDTO">
  		update cash_tabel from s_cash = #{s_cash}, s_info = #{s_info}, s_memo = #{s_memo}, s_pName = #{s_pName}, s_tAsset = #{s_tAsset} where s_number = #{s_number}
  	</update>
+ 	<select id="count" resultType="long">
+ 		select count(s_number) from cash_table where c_number = #{c_number}
+ 	</select>
  </mapper>

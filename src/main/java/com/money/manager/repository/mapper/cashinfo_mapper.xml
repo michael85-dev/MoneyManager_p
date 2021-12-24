@@ -13,4 +13,10 @@
  	<select id="detail" parameterType="long" resultType="siDTO">
  		select * from cashInfo_table where si_number = #{si_number}
  	</select>
+ 	<select id="pList" parameterType="java.util.HashMap" resultType="siDTO">
+ 		select * from cashInfo_table order by si_number desc limit #{start}, #{limit}
+ 	</select>
+ 	<select id="count" parameterType="long" resultType="long">
+ 		select count(si_number) from cashInfo_table where s_number = #{s_number}
+ 	</select>
  </mapper>

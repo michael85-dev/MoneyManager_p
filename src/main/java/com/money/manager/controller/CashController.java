@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.money.manager.dto.CashDTO;
 import com.money.manager.dto.CashInfoDTO;
 import com.money.manager.dto.ClientDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.CashInfoService;
 import com.money.manager.service.CashService;
 import com.money.manager.service.ClientService;
@@ -76,6 +77,16 @@ public class CashController {
 		ss.update(sDTO);
 		
 		return "redirect:/cash/findAll";
+	}
+	
+	@RequestMapping(value="paging", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model, @RequestParam("c_number") long c_number) {
+		PageDTO pDTO = ss.paging(page, c_number);
+		List<CashDTO> sList = ss.pagingList(page);
+		model.addAttribute("pDTO", pDTO);
+		model.addAttribute("sList", sList);
+		
+		return "/cash/findAll";
 	}
 	
 }

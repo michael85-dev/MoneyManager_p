@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.CardDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.CardService;
 
 @Controller
@@ -48,5 +49,15 @@ public class CardController {
 		ds.create(dDTO);
 		
 		return "redirect:/card/findAll";
+	}
+	
+	@RequestMapping(value="paging", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model, @RequestParam("c_number") long c_number) {
+		PageDTO pDTO = ds.paging(page, c_number);
+		List<CardDTO> dList = ds.pagingList(page);
+		model.addAttribute("pDTO", pDTO);
+		model.addAttribute("dList", dList);
+		
+		return "/card/findAll";
 	}
 }

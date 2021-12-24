@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.CashDTO;
 import com.money.manager.dto.CashInfoDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.CashInfoService;
 import com.money.manager.service.CashService;
 
@@ -52,5 +53,15 @@ public class CashInfoController {
 		model.addAttribute("siDTO", siDTO);
 		
 		return "/cashinfo/detail";
+	}
+	
+	@RequestMapping(value="page", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model, @RequestParam("si_number") long s_number) {
+		PageDTO pDTO = sis.paging(page, s_number);
+		List<CashInfoDTO> siList = sis.pagingList(page);
+		model.addAttribute("pDTO", pDTO);
+		model.addAttribute("siList", siList);
+		
+		return "/Cash/findAll";
 	}
 }

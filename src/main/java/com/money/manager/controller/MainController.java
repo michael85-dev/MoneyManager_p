@@ -97,15 +97,15 @@ public class MainController {
 		
 		
 		
-		return "findAll";
+		return "/findAll";
 	}
 	
 	@RequestMapping(value="paging", method=RequestMethod.GET)
-	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model) {
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model, @RequestParam("c_number") long c_number) {
 		PageDTO pcDTO = cs.paging(page);
-		PageDTO paDTO = as.paging(page);
-		PageDTO pdDTO = ds.paging(page);
-		PageDTO psDTO = ss.paging(page);
+		PageDTO paDTO = as.paging(page, c_number);
+		PageDTO pdDTO = ds.paging(page, c_number);
+		PageDTO psDTO = ss.paging(page, c_number);
 		
 		List<AccountDTO> aList = as.pagingList(page);
 		List<CardDTO> dList = ds.pagingList(page);
@@ -123,6 +123,13 @@ public class MainController {
 		model.addAttribute("sList", sList);
 		
 		return "/client/findAll";
+	}
+	
+	@RequestMapping(value="transfer", method=RequestMethod.GET)
+	public String transferForm(@RequestParam("c_number") long c_number, Model model) {
+		
+		
+		return "/transfer";
 	}
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.AccountInfoDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.service.AccountInfoService;
 
 @Controller
@@ -41,6 +42,16 @@ public class AccountInfoController {
 	public String create(@ModelAttribute AccountInfoDTO aiDTO) throws IllegalStateException, IOException {
 		ais.create(aiDTO);
 		// accountInfo 에서 가는 것은 그냥  대표로 가는거고 그 안에서 다시 전체 내역을 보여줘야 하기 때문에... 다르게 생각해야 할꺼 같은데.
+		return "/account/findAll";
+	}
+	
+	@RequestMapping(value="paging", method=RequestMethod.GET)
+	public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model, @RequestParam("a_number") long a_number) {
+		PageDTO pDTO = ais.paging(page, a_number);
+		List<AccountInfoDTO> aiDTO = ais.pagingList(page);
+		model.addAttribute("pDTO", pDTO);
+		model.addAttribute("aiDTO", aiDTO);
+		
 		return "/account/findAll";
 	}
 }

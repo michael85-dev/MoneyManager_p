@@ -19,4 +19,10 @@
  	<select id="login" parameterType="aDTO" resultType="aDTO">
  		select * from account_table where a_number = #{a_number} 
  	</select>
+ 	<select id="count" resultType="long" parameterType="long">
+ 		select count(a_number) from account_table c_number = #{c_number}
+ 	</select>
+ 	<select id="pList" parameterType="java.util.HashMap" resultType="aDTO">
+ 		select * from account_table order by c_number desc limit #{start}, #{limit}
+ 	</select>
  </mapper>

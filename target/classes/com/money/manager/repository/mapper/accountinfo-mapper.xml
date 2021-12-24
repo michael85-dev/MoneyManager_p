@@ -10,4 +10,10 @@
  		insert into accountinfo_table (a_number, a_bank, ai_name, ai_nName, ai_info, ai_memo, ai_iRate, ai_pNamem ai_mAsset)
  			values (#{a_number}, #{a_bank}, #{ai_name}, #{ai_nName}, #{ai_info}, #{ai_memo}, #{ai_iRate}, #ai_pName, #{ai_mAsset})
  	</insert>
+ 	<select id="count" parameterType="long" resultType="long">
+ 		select count(ai_number) from accountInfo_table where a_number = #{a_number}
+ 	</select>
+ 	<select id="pList" parameterType="java.util.HashMap" resultType="aiDTO">
+ 		select * from accountInfo_table order by ai_number desc limit #{start}, #{limit}
+ 	</select>
  </mapper>

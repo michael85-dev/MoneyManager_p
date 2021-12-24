@@ -2,13 +2,16 @@ package com.money.manager.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.money.manager.dto.CashInfoDTO;
+import com.money.manager.dto.PageDTO;
 import com.money.manager.repository.CashInfoRepository;
 
 @Service
@@ -50,6 +53,49 @@ public class CashInfoServiceImpl implements CashInfoService {
 	public CashInfoDTO detail(long si_number) {
 		// TODO Auto-generated method stub
 		return sir.detail(si_number);
+	}
+
+	private static final int PAGE_LIMIT = 5;
+	private static final int BLOCK_LIMIT = 5;
+	
+	@Override
+	public PageDTO paging(int page, long s_number) {
+		// TODO Auto-generated method stub
+		int siCount = sir.siCount(s_number);
+		int maxPage = (int)(Math.ceil((double)(siCount / PAGE_LIMIT)));
+		int startPage = (((int)(Math.ceil((double)page / BLOCK_LIMIT))) - 1);
+		
+		int endPage = startPage + BLOCK_LIMIT - 1;
+		if (endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageDTO pDTO = new PageDTO();
+		pDTO.setPage(page);
+		pDTO.setEndPage(endPage);
+		pDTO.setMaxPage(maxPage);
+		pDTO.setStartPage(startPage);
+		
+		System.out.println("aiDTO.pDTO.toString : " + pDTO.toString());
+		
+		return pDTO;
+	}
+
+	@Override
+	public List<CashInfoDTO> pagingList(int page) {
+		// TODO Auto-generated method stub
+		int pagingStart = (page - 1) * PAGE_LIMIT;
+		
+		Map<String, Integer> pagingParam = new HashMap<String, Integer>();
+		pagingParam.put("start", pagingStart);
+		pagingParam.put("limilt", PAGE_LIMIT);
+		
+		List<CashInfoDTO> pList = sir.pagingList(pagingParam);
+		for (CashInfoDTO si : pList) {
+			System.out.println("si.toString : " + si.toString());
+		}
+		
+		return pList;
 	}
 
 }

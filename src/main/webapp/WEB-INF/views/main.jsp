@@ -68,7 +68,7 @@
 	                </li> -->
 	                <li class="list-group-item" onclick="location.href='./cash/findAll?c_number=${cList.c_number}'">현금 생성(Money Manager)</li>
 	                <!-- <button id="btn" src> -->
-	                <li class="list-group-item" onclick="location.href='./card/findAll'">카드 등록()</li>
+	                <li class="list-group-item" onclick="location.href='./transfer?c_number=${cList.c_number}'">이체하기</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
@@ -174,11 +174,56 @@
 			<div class="container d-flex align-items-center py-3">
 				현금 관련 정보
 				<table>
-					<tr></tr>
+					<tr>
+						<th>현금계좌</th>
+						<th>잔액</th>
+						<th>상세</th>
+						<th>삭제</th>
+					</tr>
 					<c:forEach items="sList" var="s">
-						<tr></tr>
+						<tr>
+							<td>${s.s_cash}</td>
+							<td>${s.s_tAsset}</td>
+							<td>
+								<a href="/cash/detail?c_number=${s.c_number}">보기</a>
+							</td>
+							<td>
+								<a href="cash/delete?c_number =${s.c_number}">삭제</a>
+							</td>
+						</tr>
 					</c:forEach>
 				</table>
+				<div>
+					<c:choose>
+						<c:when test="${psDTO.page <= 1 }">
+							[이전]&nbsp;;
+						</c:when>
+						<c:otherwise>
+							<a href="/cash/paging?page=${psDTO.page - 1}&c_number=${cDTO.c_number}">[이전]</a>&nbps;
+						</c:otherwise>	
+					</c:choose>
+					
+					<c:forEach begin="${psDTO.startPage }" end="${psDTO.endPage }" var="i" step="1">
+						<c:choose>
+							<c:when test="${i eq psDTO.page }">
+								${i }
+							</c:when>
+							<c:otherwise>
+								<a href="/cash/paging?page=${i }&c_number=${cDTO.c_number}">${i }</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${psDTO.page >= psDTO.maxPage}">
+							[다음]
+						</c:when>
+						<c:otherwise>
+							<a href="/cash/paging?page=${psDTO.page+1 }&c_number=${cDTO.c_number}">[다음]</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -187,11 +232,56 @@
 			<div class="container d-flex align-items-center py-3">
 				계좌 관련 정보
 				<table>
-					<tr></tr>
+					<tr>
+						<th>계좌정보</th>
+						<th>총 잔액</th>
+						<th>상세</th>
+						<th>삭제</th>
+					</tr>
 					<c:forEach items="aList" var="a">
-						<tr></tr>
+						<tr>
+							<td>${a.a_bank}</td>
+							<td>${a.a_tAsset}</td>
+							<td>
+								<a href="/account/detail?c_number=${a.c_number}">보기</a>
+							</td>
+							<td>
+								<a href="/account/delete?c_number=${a.c_number}">삭제</a>
+							</td>
+						</tr>
 					</c:forEach>
 				</table>
+				<div>
+					<c:choose>
+						<c:when test="${paDTO.page <= 1 }">
+							[이전]&nbsp;;
+						</c:when>
+						<c:otherwise>
+							<a href="/account/paging?page=${paDTO.page - 1}&c_number=${cDTO.c_number}">[이전]</a>&nbps;
+						</c:otherwise>	
+					</c:choose>
+					
+					<c:forEach begin="${paDTO.startPage }" end="${paDTO.endPage }" var="i" step="1">
+						<c:choose>
+							<c:when test="${i eq paDTO.page }">
+								${i }
+							</c:when>
+							<c:otherwise>
+								<a href="/account/paging?page=${i }&c_number=${cDTO.c_number}">${i }</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${paDTO.page >= paDTO.maxPage}">
+							[다음]
+						</c:when>
+						<c:otherwise>
+							<a href="/account/paging?page=${paDTO.page+1 }&c_number=${cDTO.c_number}">[다음]</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				
 			</div>
 		</div>
 		<div class="col-6">
@@ -205,31 +295,31 @@
 				</table>
 				<div>
 					<c:choose>
-						<c:when test="${pDTO.page <= 1 }">
+						<c:when test="${pdDTO.page <= 1 }">
 							[이전]&nbsp;;
 						</c:when>
 						<c:otherwise>
-							<a href="/client/paging?page=${pDTO.page - 1}">이전]]</a>&nbps;
+							<a href="/card/paging?page=${pdDTO.page - 1}&c_number=${cDTO.c_number}">[이전]</a>&nbps;
 						</c:otherwise>	
 					</c:choose>
 					
-					<c:forEach begin="${pDTO.startPage }" end="${pDTO.endPage }" var="i" step="1">
+					<c:forEach begin="${pdDTO.startPage }" end="${pdDTO.endPage }" var="i" step="1">
 						<c:choose>
-							<c:when test="${i eq pDTO.page }">
+							<c:when test="${i eq pdDTO.page }">
 								${i }
 							</c:when>
 							<c:otherwise>
-								<a href="/client/paging?page=${i }">${i }</a>
+								<a href="/card/paging?page=${i }&c_number=${cDTO.c_number}">${i }</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					
 					<c:choose>
-						<c:when test="${pDTO.page >= pDTO.maxPage}">
+						<c:when test="${pdDTO.page >= pdDTO.maxPage}">
 							[다음]
 						</c:when>
 						<c:otherwise>
-							<a href="/client/paging?page=${pDTO.page+1 }">[다음]</a>
+							<a href="/card/paging?page=${pdDTO.page+1 }&c_number=${cDTO.c_number}">[다음]</a>
 						</c:otherwise>
 					</c:choose>
 				</div>

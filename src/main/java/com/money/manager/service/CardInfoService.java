@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.money.manager.dto.CardInfoDTO;
+import com.money.manager.dto.PageDTO;
 
 public interface CardInfoService {
 
@@ -14,5 +15,9 @@ public interface CardInfoService {
 	void create(CardInfoDTO ciDTO) throws IllegalStateException, IOException;
 
 	CardInfoDTO detail(long d_number);
+
+	PageDTO paging(int page, long d_number);
+
+	List<CardInfoDTO> pagingList(int page);
 
 }

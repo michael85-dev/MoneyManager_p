@@ -37,7 +37,7 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String login(@ModelAttribute ClientDTO cDTO, @RequestParam("c_number") long c_number, @ModelAttribute AccountDTO aDTO, Model model) {
+	public String login(Model model,@ModelAttribute ClientDTO cDTO, @RequestParam("c_number") long c_number, @ModelAttribute AccountDTO aDTO) {
 		System.out.println("login 데이터 전송 요청 됨");
 		
 		ClientDTO client = cs.login(cDTO);
@@ -47,6 +47,7 @@ public class ClientController { // 회원가입 요청을 위한 링크를 받�
 			session.setAttribute("logId", cDTO.getC_nickname());
 			session.setAttribute("cNum", cDTO.getC_number());
 			session.setAttribute("aNum", aDTO.getA_number());
+			model.addAttribute("cDTO", client);
 			
 			return "main";
 		

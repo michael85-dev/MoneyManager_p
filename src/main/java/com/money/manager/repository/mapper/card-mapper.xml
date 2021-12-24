@@ -13,4 +13,10 @@
  		insert into card_table(c_number, d_cCompany, d_info, d_memo, d_pName, d_tAsset, d_pAsset, d_mAsset)
  			values(#{c_number}, #{d_cCompany}, #{d_info}, #{d_memo}, #{d_pName}, #{d_tAsset}, #{d_pAsset}, #{d_mAsset})
  	</insert>
+ 	<select id="count" resultType="long" parameterType="long">
+ 		select count(d_number) from card_table where c_number = #{c_number}
+ 	</select>
+ 	<select id="pList" parameterType="java.util.HashMap" resultType="dDTO">
+ 		select * from card_table order by c_number desc limit #{start} #{limit}
+ 	</select>
  </mapper>
