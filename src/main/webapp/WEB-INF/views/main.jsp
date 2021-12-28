@@ -83,8 +83,6 @@
 	            </div>
 	        </div>
 	    </div>
-	    <!-- css에서 주어진 class 설정 -->
-	    <!-- 4개 메뉴에 대한 항목 -->
 	    <ul class="nav flex-grow-1">
 	        <li class="nav-item">
 	            <a href="#" class="nav-link text-light" onclick="location.href='./account/create'">계좌 생성(Account create)</a>
@@ -113,7 +111,7 @@
 	            <a href="#" class="nav-link text-light" onclick="location.href='./contacts.html'">Contacts</a>
 	        </li>
 	        <li class="nav-item">
-	        	<a href="#" class="nav-link text-light" onclick="location.href='./????????'">?????</a> 
+	        	<a href="#" class="nav-link text-light" onclick="location.href='./transform?c_number=${cList.c_number}'">이체하기</a> 
 	        </li>
 	        <li class="nav-item">
 	        	<a href="#" class="nav-link text-light" onclick="location.href='./????????'">?????</a> 

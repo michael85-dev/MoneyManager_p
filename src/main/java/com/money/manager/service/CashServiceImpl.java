@@ -61,6 +61,7 @@ public class CashServiceImpl implements CashService{
 	@Override
 	public void update(CashDTO sDTO) throws IllegalStateException, IOException {
 		// TODO Auto-generated method stub
+		
 		MultipartFile s_photo = sDTO.getS_photo();
 		String s_pName = s_photo.getOriginalFilename();
 		

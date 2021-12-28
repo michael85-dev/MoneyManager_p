@@ -24,4 +24,6 @@ public interface ClientService {
 
 	ClientDTO login(ClientDTO cDTO);
 
+	List<ClientDTO> findAll();
+
 }

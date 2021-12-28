@@ -13,11 +13,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.money.manager.dto.CardInfoDTO;
 import com.money.manager.dto.PageDTO;
 import com.money.manager.repository.CardInfoRepository;
+import com.money.manager.repository.CardRepository;
 
 @Service
 public class CardInfoServiceImpl implements CardInfoService {
 	@Autowired
 	private CardInfoRepository cir;
+	@Autowired
+	private CardRepository dr;
 	
 //	@Override
 //	public List<CardInfoDTO> findAll() {
@@ -32,8 +35,14 @@ public class CardInfoServiceImpl implements CardInfoService {
 	}
 
 	@Override
-	public void create(CardInfoDTO ciDTO) throws IllegalStateException, IOException {
+	public void create(CardInfoDTO ciDTO, long d_number) throws IllegalStateException, IOException {
 		// TODO Auto-generated method stub
+		long asset = dr.detail(d_number).getD_tAsset();
+		
+		asset = asset + ciDTO.getDi_pAsset();
+		
+		dr.detail(d_number).setD_tAsset(asset);
+		
 		MultipartFile ci_photo = ciDTO.getDi_photo();
 		String di_pName = ci_photo.getOriginalFilename();
 		
@@ -98,6 +107,34 @@ public class CardInfoServiceImpl implements CardInfoService {
 		}
 		
 		return pList;
+	}
+
+	@Override
+	public void update(CardInfoDTO diDTO, long d_number) throws IllegalStateException, IOException {
+		// TODO Auto-generated method stub
+		// 자산 설정 -> 이 항목은 하기 CardContents에서 가져오는걸 전부 합칠껀데 따로 pAsset 설정하는 란이 있는가? 없으면 굳이 따로 반영해야 할 필요가 있나?
+		long asset = dr.detail(d_number).getD_tAsset();
+		
+		asset = asset - diDTO.getDi_pAsset();
+		
+		dr.detail(d_number).setD_pAsset(asset);
+		
+		
+		// 파일명 설정
+		MultipartFile di_photo = diDTO.getDi_photo();
+		String di_pName = di_photo.getOriginalFilename();
+		
+		di_pName = System.currentTimeMillis() + "-" + di_pName;
+		
+		String savePath = "/Users/myungha/Desktop/Github/MoneyManager/src/main/webapp/resources/upload" + di_pName;
+		
+		if (!di_photo.isEmpty()) {
+			di_photo.transferTo(new File(savePath));
+		}
+		
+		diDTO.setDi_pName(di_pName);
+		
+		cir.update(diDTO);
 	}
 
 }

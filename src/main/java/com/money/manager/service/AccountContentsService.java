@@ -8,4 +8,6 @@ public interface AccountContentsService {
 
 	List<AccountContentsDTO> detail(long ai_number);
 
+	AccountContentsDTO detailSource(long ac_number);
+
 }

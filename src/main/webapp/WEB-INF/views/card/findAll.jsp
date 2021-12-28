@@ -58,7 +58,7 @@
 </div>
 <div class="col-9">
 	<div class="row text-end">
-		<a href="cardinfo/craeteform?d_number${ciList.d_number}&d_cCompany=${ciList.d_cCompany}">내역 추가</a>
+		<a href="cardinfo/craeteform?d_number${ciList.d_number}">내역 추가</a>
 	</div>
 	<table>
 		<tr>
@@ -77,11 +77,40 @@
 				</td>
 				<td>${ci.di_tAsset}</td>
 				<td>
-					<a href="cardinfo/detail?d_number=${d_number}&a_bank=${a_bank}">조회</a>
+					<a href="cardcontents/findAll?di_number=${di_number}">조회</a>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<div>
+		<c:choose>
+			<c:when test="${pDTO.page <= 1 }">
+				[이전]&nbsp;;
+			</c:when>
+			<c:otherwise>
+				<a href="/cardcontents/paging?page=${pDTO.page - 1}">[이전]</a>&nbps;
+			</c:otherwise>	
+		</c:choose>
+		<c:forEach begin="${pDTO.startPage }" end="${pDTO.endPage }" var="i" step="1">
+			<c:choose>
+				<c:when test="${i eq pdDTO.page }">
+					${i }
+				</c:when>
+				<c:otherwise>
+					<a href="/cardcontents/paging?page=${i }">${i }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${pDTO.page >= pDTO.maxPage}">
+				[다음]
+			</c:when>
+			<c:otherwise>
+				<a href="/cardcontents/paging?page=${pDTO.page+1 }">[다음]</a>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </div>
 </div>
 </section>

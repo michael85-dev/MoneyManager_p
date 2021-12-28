@@ -19,4 +19,7 @@
  	<select id="count" parameterType="long" resultType="long">
  		select count(si_number) from cashInfo_table where s_number = #{s_number}
  	</select>
+ 	<update id="update" parameterType="siDTO">
+ 		update cashInfo_table set si_name = #{si_name}, si_memo = #{si_memo}, si_pName = #{si_pName}, si_tAsset = #{si_tAsset}
+ 	</update>
  </mapper>

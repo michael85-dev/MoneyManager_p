@@ -12,12 +12,14 @@ public interface CashInfoService {
 
 	List<CashInfoDTO> detailList(long s_number);
 
-	void create(CashInfoDTO siDTO) throws IllegalStateException, IOException;
+	void create(CashInfoDTO siDTO, long s_number) throws IllegalStateException, IOException;
 
 	CashInfoDTO detail(long si_number);
 
 	PageDTO paging(int page, long s_number);
 
 	List<CashInfoDTO> pagingList(int page);
+
+	void updatae(CashInfoDTO siDTO, long s_number) throws IllegalStateException, IOException;
 
 }

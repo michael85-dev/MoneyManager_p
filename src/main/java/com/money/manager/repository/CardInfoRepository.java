@@ -38,6 +38,11 @@ public class CardInfoRepository {
 		// TODO Auto-generated method stub
 		return sql.selectList("CardInfo.pList", pagingParam);
 	}
+
+	public void update(CardInfoDTO diDTO) {
+		// TODO Auto-generated method stub
+		sql.update("CardInfo.update", diDTO);
+	}
 	
 	
 }

@@ -17,6 +17,23 @@
 
 </head>
 <body>
+<header>
 
+</header>
+
+<section>
+	<form action="/cashinfo/update?s_number=${siDTO.s_number}" method="post" enctype="Multipart/form-data">
+		si_number <input type="hidden" name="si_number" value="${siDTO.si_number}" readonly>
+	    s_cash <input type="text" name="s_cash" value="${siDTO.s_cash}">
+	    s_number <input type="hidden" name="s_number" value="${siDTO.s_number}" readonly>
+	    si_name <input type="text" name="si_name" value="${siDTO.si_name}">
+		si_memo <textarea name="si_memo" rows="5"></textarea>
+	    si_pName <input type="file" name="si_photo">
+	    si_tAsset <input type="text" name="si_tAsset">
+	
+		<input type="submit" value="수정">
+		<button id="back" onclick="back()">돌아가기</button>
+	</form>
+</section>
 </body>
 </html>

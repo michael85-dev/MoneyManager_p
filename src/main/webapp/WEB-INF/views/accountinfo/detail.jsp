@@ -40,18 +40,20 @@
 				<th>연결 계좌</th>
 				<th>사용 내역</th>
 				<th>출금 계좌</th>
-				<th>입금액</th>
-				<th>출금액</th>
+				<th>금액</th>
 				<th>증빙</th>
+				<th>수정</th>
 			</tr>
 			<c:forEach items="acList" var="a">
 				<tr> 진행 
-					<td>${입출금계좌}</td>
-					<td>${ac_use}</td> 사용계좌????? / useAcc랑 선택해야 하는데. 흠... List화를 시켜야 하나.
-					<td>${ac_useAcc}</td>
-					<td>${ac_pAsset}</td>
-					<td>${ac_mAsset}</td>근데 해보고 name 값을 바꾸는것 보다 차라리 라디오 버튼이나 select 이용해서 선택하고 넘기는게 더 나을지도.. 
-					<td>${ac_pName}</td>예를들어 입금, 출금 radio를 선택하게 하고 입금이냐 출금이냐를 구분하는 방식으로.. 
+					<td>${a.ac_number}</td>
+					<td>${a.ac_use}</td> 사용계좌????? / useAcc랑 선택해야 하는데. 흠... List화를 시켜야 하나.
+					<td>${a.ac_useAcc}</td>
+					<td>${a.ac_pAsset}</td>
+					<td>${a.ac_pName}</td>예를들어 입금, 출금 radio를 선택하게 하고 입금이냐 출금이냐를 구분하는 방식으로.. 
+					<td>
+						<a href="/accountcontents/update?ai_number=${acList.ai_number}">수정</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

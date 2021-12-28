@@ -19,7 +19,7 @@ public class ClientRepository {
 
 	public List<ClientDTO> findAll(long c_number) {
 		// TODO Auto-generated method stub
-		return sql.selectList("Client.findAll");
+		return sql.selectList("Client.client");
 	}
 
 	public ClientDTO detail(long c_number) {
@@ -50,6 +50,11 @@ public class ClientRepository {
 	public ClientDTO login(ClientDTO cDTO) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("Client.login", cDTO);
+	}
+
+	public List<ClientDTO> findAll() {
+		// TODO Auto-generated method stub
+		return sql.selectList("Client.findAll");
 	}
 
 }

@@ -22,7 +22,7 @@
 </header>
 cashinfo-create
 <section>
-	<form action="cashinfo/create" mehotd="post" enctype="Multipart/form-data">
+	<form action="cashinfo/create?s_number=${sDTO.s_number}" method="post" enctype="Multipart/form-data">
 		si_number : 자동
 		s_cash 계좌명 <input type="text" name="s_cash" value="${sDTO.s_cash}">
 		s_number <input type="hidden" name="s_number" value="${sDTO.s_number}" readonly>

@@ -17,6 +17,11 @@ public class AccountContentsRepository {
 		// TODO Auto-generated method stub
 		return sql.selectList("AccountContents.detail", ai_number);
 	}
+
+	public AccountContentsDTO detailSource(long ac_number) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("AccountContents.detailSource", ac_number);
+	}
 	
 	
 }

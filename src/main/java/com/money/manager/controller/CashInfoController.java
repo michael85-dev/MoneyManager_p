@@ -41,8 +41,15 @@ public class CashInfoController {
 	}
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
-	public String create(@ModelAttribute CashInfoDTO siDTO) throws IllegalStateException, IOException {
-		sis.create(siDTO);
+	public String create(@ModelAttribute CashInfoDTO siDTO, @RequestParam("s_number") long s_number) throws IllegalStateException, IOException {
+		sis.create(siDTO, s_number);
+		
+		return "/cash/findAll";
+	}
+	
+	@RequestMapping(value="update", method=RequestMethod.POST)
+	public String update(@ModelAttribute CashInfoDTO siDTO, @RequestParam("s_number") long s_number) throws IllegalStateException, IOException {
+		sis.updatae(siDTO, s_number);
 		
 		return "/cash/findAll";
 	}

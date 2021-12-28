@@ -19,4 +19,7 @@
  	<select id="pList" parameterType="java.util.HashMap" resultType="ciDTO">
  		select * from  cardInfo_table order by di_number desc limit #{start}, #{limit}
  	</select>
+ 	<update id="update" parameterType="ciDTO">
+ 		update cardInfo_table set di_name = #{di_name}, di_memo = #{di_memo}, di_tAsset = #{di_tAsset}, di_pName = #{di_pName}, di_cCompany = #{di_cCompany}
+ 	</update>
  </mapper>

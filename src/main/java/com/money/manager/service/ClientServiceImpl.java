@@ -124,4 +124,10 @@ public class ClientServiceImpl implements ClientService {
 		return cr.login(cDTO);
 	}
 
+	@Override
+	public List<ClientDTO> findAll() {
+		// TODO Auto-generated method stub
+		return cr.findAll();
+	}
+
 }

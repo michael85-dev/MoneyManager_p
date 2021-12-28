@@ -49,8 +49,8 @@ public class CardInfoController {
 	}
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
-	public String create(@ModelAttribute CardInfoDTO ciDTO) throws IllegalStateException, IOException {
-		cis.create(ciDTO);
+	public String create(@ModelAttribute CardInfoDTO ciDTO, @RequestParam("d_number") long d_number) throws IllegalStateException, IOException {
+		cis.create(ciDTO, d_number);
 		
 		return "/card/findAll";
 	}
@@ -60,7 +60,14 @@ public class CardInfoController {
 		CardInfoDTO ciDTO = cis.detail(d_number);
 		model.addAttribute("ciDTO", ciDTO);
 		
-		return "/cardInfo/detail";
+		return "/cardinfo/detail";
+	}
+	
+	@RequestMapping(value="update", method=RequestMethod.POST)
+	public String update(@RequestParam("d_number") long d_number, Model model, @ModelAttribute CardInfoDTO diDTO) throws IllegalStateException, IOException {
+		cis.update(diDTO, d_number);
+		
+		return "/card/findAll";
 	}
 	
 	@RequestMapping(value="pageing", method=RequestMethod.GET)

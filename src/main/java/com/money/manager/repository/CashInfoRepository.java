@@ -43,4 +43,9 @@ public class CashInfoRepository {
 		// TODO Auto-generated method stub
 		return sql.selectOne("CashInfo.count", s_number);
 	}
+
+	public void update(CashInfoDTO siDTO) {
+		// TODO Auto-generated method stub
+		sql.update("CardInfo.update", siDTO);
+	}
 }

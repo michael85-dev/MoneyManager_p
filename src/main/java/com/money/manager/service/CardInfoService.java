@@ -12,12 +12,14 @@ public interface CardInfoService {
 
 	List<CardInfoDTO> findAll(long d_number);
 
-	void create(CardInfoDTO ciDTO) throws IllegalStateException, IOException;
+	void create(CardInfoDTO ciDTO, long d_number) throws IllegalStateException, IOException;
 
 	CardInfoDTO detail(long d_number);
 
 	PageDTO paging(int page, long d_number);
 
 	List<CardInfoDTO> pagingList(int page);
+
+	void update(CardInfoDTO diDTO, long d_number) throws IllegalStateException, IOException;
 
 }

@@ -25,7 +25,7 @@
 </header>
 
 <section>
-	<form action="/" method="post" enctype="Multipart/form-data">
+	<form action="/card/create?d_number=${d_number}" method="post" enctype="Multipart/form-data">
 		
 	</form>
 </section>

@@ -27,7 +27,7 @@
 
 </header>
 <section>
-	<form action="/cardinfo/create" method="post">
+	<form action="/cardinfo/create?d_number=${dDTO.d_number}" method="post">
 		d_cCompany <input type="hidden" name="d_number" value="${dDTO.d_number}" readonly>
 		d_number <input type="hidden" name="d_cCompany" value="${dDTO.d_cCompany}" readonly>
 		a_bank <input type="hidden" name="a_bank" value="${aDTO.a_bank}"> <!-- 선택할 수 있게 변경해야 할꺼 같은데.. --> 

@@ -30,7 +30,8 @@ cash 항목의 메모와 정보 등을 볼 수 있으며 수정도 가능하게 
 		s_memo 메모 <input type="text" name="s_memo">
 		s_pName 첨부 <input type="file" name="s_photo">
 		s_tAsset 초기 금액 <input type="text" name="s_tAsset">
-		<input type="submit" value="생성">
+		<input type="submit" value="수정">
+		<button id="back" onclick="back()">돌아가기</button>
 	</form>
 
 </section>

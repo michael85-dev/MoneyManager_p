@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="CardContents">
+ 	<select id="findAll" parameterType="long" resultType="dcDTO">
+ 		select * from cardContents_table where di_number = #{di_number}
+ 	</select>
+ 	<insert id="create" parameterType="dcDTO">
+ 		insert into cardContents_table (di_number, di_name, dc_name, dc_info, dc_memo, dc_nName, dc_pName, dc_tAsset, dc_pAsset)
+ 			values (#{di_number}, #{di_name}, #{dc_name}, #{dc_info}, #{dc_memo}, #{dc_nName}, #{dc_pName}, #{dc_tAsset}, #{dc_pAsset})
+ 	</insert>
+ 	<select id="detail" parameterType="long" resultType="dcDTO">
+ 		select * from cardContents_table where dc_number = #{dc_number}
+ 	</select>
+ 	<select id="count" parameterType="long" resultType="long">
+ 		select count(dc_number) from cardContents_table where di_number = ${di_number} 
+ 	</select>
+ 	<select id="pList" parameterType="java.util.HashMap" resultType="dcDTO">
+ 		select * from cardContents_table where dc_number = ${dc_number} order by di_number desc limit #{start}, #{limit}
+ 	</select>
+ 	<update id="update" parameterType="dcDTO">
+ 		update cardContents_table set dc_name = #{dc_name}, dc_pAsset = #{dc_pAsset}, dc_memo = #{dc_memo}, dc_info = #{dc_info}
+ 	</update>
+ </mapper>

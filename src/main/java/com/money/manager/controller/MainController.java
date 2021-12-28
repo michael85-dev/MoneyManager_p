@@ -11,12 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.money.manager.dto.AccountDTO;
+import com.money.manager.dto.AccountInfoDTO;
 import com.money.manager.dto.CardDTO;
 import com.money.manager.dto.CashDTO;
 import com.money.manager.dto.ClientDTO;
 import com.money.manager.dto.PageDTO;
+import com.money.manager.service.AccountContentsService;
+import com.money.manager.service.AccountInfoService;
 import com.money.manager.service.AccountService;
+import com.money.manager.service.CardInfoService;
 import com.money.manager.service.CardService;
+import com.money.manager.service.CashInfoService;
 import com.money.manager.service.CashService;
 import com.money.manager.service.ClientService;
 import com.money.manager.service.MainService;
@@ -33,6 +38,16 @@ public class MainController {
 	private CashService ss;
 	@Autowired
 	private CardService ds;
+	@Autowired
+	private AccountInfoService ais;
+	@Autowired
+	private CardInfoService dis;
+	@Autowired
+	private CashInfoService cis;
+	@Autowired
+	private AccountContentsService acs;
+	@Autowired
+
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index() {
@@ -125,11 +140,15 @@ public class MainController {
 		return "/client/findAll";
 	}
 	
-	@RequestMapping(value="transfer", method=RequestMethod.GET)
-	public String transferForm(@RequestParam("c_number") long c_number, Model model) {
-		
+	@RequestMapping(value="transform", method=RequestMethod.GET)
+	public String transForm(@RequestParam("c_number") long c_number, Model model) {
+		List<AccountDTO> aList = as.findAll(c_number);
+		List<CardDTO> dList = ds.findAll(c_number);
+		List<CashDTO> sList = ss.findAll(c_number);
+		List<AccountInfoDTO> aiList = ais.findAll();
 		
 		return "/transfer";
 	}
+	
 	
 }

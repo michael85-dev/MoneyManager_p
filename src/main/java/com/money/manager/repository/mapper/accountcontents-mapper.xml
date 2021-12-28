@@ -6,5 +6,8 @@
  	<select id="detail" parameterType="long" resultType="acDTO">
  		select * from accountContents_table where ai_number = #{ai_number}
  	</select>
+ 	<select id="detailSource" parameterType="long" resultType="acDTO">
+ 		select * from accountContents_table where ac_number = #{ac_number}
+ 	</select>
  	
  </mapper>

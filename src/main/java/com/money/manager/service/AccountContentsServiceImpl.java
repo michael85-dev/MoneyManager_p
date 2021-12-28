@@ -19,4 +19,10 @@ public class AccountContentsServiceImpl implements AccountContentsService {
 		return acr.detail(ai_number);
 	}
 
+	@Override
+	public AccountContentsDTO detailSource(long ac_number) {
+		// TODO Auto-generated method stub
+		return acr.detailSource(ac_number);
+	}
+
 }
