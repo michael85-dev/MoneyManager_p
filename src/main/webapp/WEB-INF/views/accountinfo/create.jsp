@@ -23,9 +23,9 @@
 	
 </header>
 <section>
-	<form action="/accountInfo/create" method="post" enctype="Multipart/form-data">
-		<input type="hidden" name="a_number" value="${a_number}">
-		<input type="hidden" name="a_bank" value="${a_bank}">
+	<form action="/accountInfo/create?a_number=${aDTO.a_number}" method="post" enctype="Multipart/form-data">
+		<input type="hidden" name="a_number" value="${aDTO.a_number}">
+		<input type="hidden" name="a_bank" value="${aDTO.a_bank}">
 		내역 : <input type="text" name="ai_name">
 		<input type="text" name="ai_nName">
 		정보 : <input type="text" name="ai_info">

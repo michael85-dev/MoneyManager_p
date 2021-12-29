@@ -20,18 +20,14 @@
 
 </header>
 <section>
-	<form action="/accountinfo/update?a_number=${aiDTO.a_number}" method="post" enctype="Multipart/form-data">
-		<input type="hidden" name="a_number" value="${aiDTO.a_number}" readonly>
-		<input type="text" name="ai_name">
-		<input type="text" name="ai_info">
-		<input type="text" name="ai_iRate">
-		<input type="text" name="ai_pAsset">
-		메모 : <textarea name="ai_memo" rows="5"></textarea>
-		사진 : <input type="file" name="ai_photo">
-		<button id="back" onclick="back()">돌아가기</button>
-		<input type="submit" value="수정">
-		</form>
-
+	<form action="/accountcontents/create?ai_number=${aiDTO.ai_number}" method="post" enctype="Multipart/form-data">
+		ai_number <input type="hidden" name="ai_number" value="${aiDTO.ai_number}">
+	    ac_name <input type="text" name="ac_name">
+	    ac_memo <input type="text" name="ac_memo">
+	    ac_pName <input type=file" name="ac_photo">
+	    ac_pAsset <input type="text" name="ac_pAsset">
+	    <input type="submit" value="저장">
+	</form>
 </section>
 </body>
 </html>

@@ -35,12 +35,13 @@
 		은행 정보
 	</div>
 	<div>
-		<form action="/account/update" method="post" enctype="Multipart/form-data">
+		<form action="/account/update?a_number=${aDTO.a_number}" method="post" enctype="Multipart/form-data">
 			<input type="hidden" name="a_number" value="${aDTO.a_number}" readonly>
 			<input type="hidden" name="c_number" value="${aDTO.c_number}" readonly>
 			은행명 : <input type="text" name="a_bank" value="${aDTO.a_bank}">
 			은행 정보 : <input type="text" name="a_info" value="${aDTO.a_info}">
 			메모 : <textarea name="a_memo" rows="5"></textarea>
+			총액 : <input type="text" name="a_tAsset">
 			사진 : <input type="file" name="a_photo">
 			<button class="" onclick="location.href='./account/update?a_number=${aDTO.a_number}'">수정</button>
 			<button class="" onclick="location.href='./account/findAll'">확인</button>

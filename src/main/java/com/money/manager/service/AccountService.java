@@ -14,7 +14,7 @@ public interface AccountService {
 
 	AccountDTO detail(long a_number);
 
-	void update(long a_number);
+	void update(AccountDTO aDTO, long a_number);
 
 	AccountDTO login(AccountDTO aDTO);
 

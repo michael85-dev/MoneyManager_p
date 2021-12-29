@@ -3,11 +3,11 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="AccountInfo">
- 	<select id="detail" parameterType="long" resultType="aiDTO">
+ 	<select id="findAll" parameterType="long" resultType="aiDTO">
  		select * from accountInfo_table where a_number = #{a_number}
  	</select>
  	<insert id="create" parameterType="aiDTO">
- 		insert into accountinfo_table (a_number, a_bank, ai_name, ai_nName, ai_info, ai_memo, ai_iRate, ai_pNamem ai_mAsset)
+ 		insert into accountInfo_table (a_number, a_bank, ai_name, ai_nName, ai_info, ai_memo, ai_iRate, ai_pNamem ai_mAsset)
  			values (#{a_number}, #{a_bank}, #{ai_name}, #{ai_nName}, #{ai_info}, #{ai_memo}, #{ai_iRate}, #ai_pName, #{ai_mAsset})
  	</insert>
  	<select id="count" parameterType="long" resultType="long">
@@ -16,4 +16,10 @@
  	<select id="pList" parameterType="java.util.HashMap" resultType="aiDTO">
  		select * from accountInfo_table order by ai_number desc limit #{start}, #{limit}
  	</select>
+ 	<select id="detail" parameterType="long" resultType="aiDTO">
+ 		select * from accountInfo_table where ai_number = #{ai_number}
+ 	</select>
+ 	<update id="update" parameterType="aiDTO">
+ 		update accountInfo_table set ai_name = #{ai_name}, ai_info = #{ai_info}, ai_memo = #{ai_memo}, ai_iRate = #{ai_iRate}, ai_pName = #{ai_pName}, ai_pAsset = #{ai_pAsset}
+ 	</update>
  </mapper>

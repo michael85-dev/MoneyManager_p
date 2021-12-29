@@ -65,11 +65,11 @@ public class AccountController {
 		
 		return "/account/detail";
 	}
-	
+		
 	@RequestMapping(value="update", method=RequestMethod.POST)
-	public String update(@RequestParam("a_number") long a_number) {
+	public String update(@RequestParam("a_number") long a_number, @ModelAttribute AccountDTO aDTO) {
 		System.out.println("Account.update.post 요청됨");
-		as.update(a_number);
+		as.update(aDTO, a_number);
 		
 		return "redirect:/account/findAll";
 	}

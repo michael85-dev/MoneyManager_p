@@ -13,14 +13,19 @@ public class AccountContentsRepository {
 	@Autowired
 	private SqlSessionTemplate sql;
 
-	public List<AccountContentsDTO> detail(long ai_number) {
+	public List<AccountContentsDTO> findAll(long ai_number) {
 		// TODO Auto-generated method stub
-		return sql.selectList("AccountContents.detail", ai_number);
+		return sql.selectList("AccountContents.findAll", ai_number);
 	}
 
 	public AccountContentsDTO detailSource(long ac_number) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("AccountContents.detailSource", ac_number);
+	}
+
+	public void create(AccountContentsDTO acDTO) {
+		// TODO Auto-generated method stub
+		sql.insert("AccountContents.create", acDTO);
 	}
 	
 	

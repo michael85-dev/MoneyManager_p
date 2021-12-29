@@ -51,9 +51,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void update(long a_number) {
+	public void update(AccountDTO aDTO, long a_number) {
 		// TODO Auto-generated method stub
-		ar.update(a_number);
+		
+		ar.update(aDTO);
 	}
 
 	@Override

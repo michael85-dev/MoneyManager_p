@@ -29,9 +29,9 @@ public class AccountRepository {
 		return sql.selectOne("Account.detail", a_number);
 	}
 
-	public void update(long a_number) {
+	public void update(AccountDTO aDTO) {
 		// TODO Auto-generated method stub
-		sql.update("Account.update", a_number);
+		sql.update("Account.update", aDTO);
 	}
 
 	public AccountDTO login(AccountDTO aDTO) {

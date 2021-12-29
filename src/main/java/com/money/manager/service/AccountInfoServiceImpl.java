@@ -13,11 +13,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.money.manager.dto.AccountInfoDTO;
 import com.money.manager.dto.PageDTO;
 import com.money.manager.repository.AccountInfoRepository;
+import com.money.manager.repository.AccountRepository;
 
 @Service
 public class AccountInfoServiceImpl implements AccountInfoService {
 	@Autowired
 	private AccountInfoRepository air;
+	@Autowired
+	private AccountRepository ar;
+	
 	@Override
 	public List<AccountInfoDTO> findAll() {
 		// TODO Auto-generated method stub
@@ -25,14 +29,18 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 	}
 
 	@Override
-	public List<AccountInfoDTO> detail(long a_number) {
+	public List<AccountInfoDTO> findAll(long a_number) {
 		// TODO Auto-generated method stub
-		return air.detail(a_number);
+		return air.findAll(a_number);
 	}
 
 	@Override
-	public void create(AccountInfoDTO aiDTO) throws IllegalStateException, IOException {
+	public void create(AccountInfoDTO aiDTO, long a_number) throws IllegalStateException, IOException {
 		// TODO Auto-generated method stub
+		long asset = ar.detail(a_number).getA_tAsset();
+		asset = asset + aiDTO.getAi_pAsset();
+		ar.detail(a_number).setA_tAsset(asset);
+		
 		MultipartFile ai_photo = aiDTO.getAi_photo();
 		String ai_pName= ai_photo.getOriginalFilename();
 		
@@ -92,6 +100,35 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 		}
 		
 		return pList;
+	}
+
+	@Override
+	public AccountInfoDTO detail(long ai_number) {
+		// TODO Auto-generated method stub
+		
+		return air.detail(ai_number);
+	}
+
+	@Override
+	public void update(AccountInfoDTO aiDTO, long a_number) throws IllegalStateException, IOException {
+		// TODO Auto-generated method stub
+		long asset = ar.detail(a_number).getA_tAsset();
+//		asset = asset +
+		
+		MultipartFile ai_photo = aiDTO.getAi_photo();
+		String ai_pName = ai_photo.getOriginalFilename();
+		
+		ai_pName = System.currentTimeMillis() + "-" + ai_pName;
+		
+		String savePath = "/Users/myungha/Desktop/Github/MoneyManager/src/main/webapp/resources/upload" + ai_pName;
+		
+		if (!ai_photo.isEmpty()) {
+			ai_photo.transferTo(new File(savePath));
+		}
+		
+		aiDTO.setAi_pName(ai_pName);
+		
+		air.update(aiDTO);
 	}
 
 }

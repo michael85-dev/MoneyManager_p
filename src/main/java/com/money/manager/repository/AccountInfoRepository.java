@@ -14,9 +14,9 @@ public class AccountInfoRepository {
 	@Autowired
 	private SqlSessionTemplate sql;
 	
-	public List<AccountInfoDTO> detail(long a_number) {
+	public List<AccountInfoDTO> findAll(long a_number) {
 		// TODO Auto-generated method stub
-		return sql.selectList("AccountInfo.detail", a_number);
+		return sql.selectList("AccountInfo.findAll", a_number);
 	}
 
 	public void create(AccountInfoDTO aiDTO) {
@@ -32,6 +32,16 @@ public class AccountInfoRepository {
 	public int aiCount(long a_number) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("AccountInfo.count", a_number);
+	}
+
+	public AccountInfoDTO detail(long ai_number) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("AccountInfo.detail", ai_number);
+	}
+
+	public void update(AccountInfoDTO aiDTO) {
+		// TODO Auto-generated method stub
+		sql.update("AccountInfo.update", aiDTO);
 	}
 
 }

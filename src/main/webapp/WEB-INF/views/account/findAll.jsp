@@ -66,7 +66,7 @@
 	</div>
 	<div class="col-9">
 		<<div class="row text-end">
-			<a href="/accountInfo/createform?a_number=${a.a_number}&a_bank=${a.a_bank}">내역 추가</a> <!-- 이렇게 하면은 과연 선택한 은행 정보가 그대로 들어오나? -->
+			<a href="/accountInfo/createform?a_number=${a.a_number}">내역 추가</a> <!-- 이렇게 하면은 과연 선택한 은행 정보가 그대로 들어오나? -->
 		</div>
 		계좌 항목들
 		<div>
@@ -76,6 +76,7 @@
 					<th>계좌별창</th>
 					<th>잔액</th>
 					<th>내역보기</th>
+					<th>정보 보기</th>
 				</tr>
 				<tr>
 					<c:forEach items="${aiList}" var="ai">
@@ -83,7 +84,10 @@
 						<td>${a.ai_nName}</td>
 						<td>${a.ai_tAsset}</td>
 						<td>
-							<a href="/accountcontents/detail?ai_number={${a.ai_number}">보기</a>
+							<a href="/accountinfo/findAll?a_number=${a.a_number}">보기</a>
+						</td>
+						<td>
+							<a href="/accountinfo/detail?ai_number=${a.ai_number}">보기</a>
 						</td>				
 					</c:forEach>
 				</tr>

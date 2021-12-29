@@ -26,6 +26,27 @@
 	</div>
 	<div class="row">
 		계좌 세부 사항 설정
+		<table>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th>세부보기</th>
+			</tr>
+			
+			<c:forEach items="${acList}" var="ac">
+				<<tr>
+					<td>${ac.ai_number}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<a href="/accountcontents/detail?ac_number=${ac.ac_number}">보기</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 </section>
 </body>
