@@ -68,7 +68,7 @@
 	                </li> -->
 	                <li class="list-group-item" onclick="location.href='./cash/findAll?c_number=${cList.c_number}'">현금 생성(Money Manager)</li>
 	                <!-- <button id="btn" src> -->
-	                <li class="list-group-item" onclick="location.href='./transfer?c_number=${cList.c_number}'">이체하기</li>
+	                <li class="list-group-item" onclick="location.href='./transform?c_number=${cList.c_number}'">이체하기</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>
 	                <li class="list-group-item" onclick="location.href='./contacts.html'">Contract</li>

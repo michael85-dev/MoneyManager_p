@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.money.manager.dto.AccountDTO;
 import com.money.manager.dto.AccountInfoDTO;
 import com.money.manager.dto.CardDTO;
+import com.money.manager.dto.CardInfoDTO;
 import com.money.manager.dto.CashDTO;
+import com.money.manager.dto.CashInfoDTO;
 import com.money.manager.dto.ClientDTO;
 import com.money.manager.dto.PageDTO;
 import com.money.manager.service.AccountContentsService;
@@ -43,7 +45,7 @@ public class MainController {
 	@Autowired
 	private CardInfoService dis;
 	@Autowired
-	private CashInfoService cis;
+	private CashInfoService sis;
 	@Autowired
 	private AccountContentsService acs;
 	@Autowired
@@ -145,10 +147,35 @@ public class MainController {
 		List<AccountDTO> aList = as.findAll(c_number);
 		List<CardDTO> dList = ds.findAll(c_number);
 		List<CashDTO> sList = ss.findAll(c_number);
-		List<AccountInfoDTO> aiList = ais.findAll();
 		
-		return "/transfer";
+		model.addAttribute("aList", aList);
+		model.addAttribute("dList", dList);
+		model.addAttribute("sList", sList);
+		
+		return "/transform";
 	}
 	
+	@RequestMapping(value="atransferform", method=RequestMethod.GET)
+	public String accountTrans(@RequestParam("c_number") long c_number, Model model) {
+		// 계좌 리스트 불러올 2개를 가지고 와야함. 다만 해당 값에 대해서는. ai_number로 명명 되어야 함. 어떻게 가지고 와야할까?
+		List<AccountInfoDTO> a1 = ais.findAll(a_number);
+		
+		List<AccountInfoDTO> a2 = ais.findAll(a_number);
+		return "/account/transform";
+	}
+	
+	@RequestMapping(value="stransferform", method=RequestMethod.GET)
+	public String cashTrans(@RequestParam("c_number") long c_number, Model model) {
+		List<AccountInfoDTO> a4 = ais.findAll(a_number);
+		List<CashInfoDTO> s1 = sis.findAll(s_number);
+		
+		return "/cash/transform";
+	}
+	@RequestMapping(value="dtransferform", method=RequestMethod.GET)
+	public String cardTrans(@RequestParam("c_number") long c_number, Model model) {
+		List<AccountInfoDTO> a3 = ais.findAll(a_number);
+		List<CardInfoDTO> d1 = dis.findAll(d_number);
+		return "/card/transform";
+	}
 	
 }
