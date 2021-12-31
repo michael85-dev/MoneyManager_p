@@ -29,10 +29,10 @@
 1. 계좌 & 계좌
 2. 현금 & 계좌
 3. 카드 & 계좌 (?)
-<div class="text-end">
-	<a href="/atransferform?c_number=${aList.c_number}">계좌에서 계좌로</a>
-	<a href="/stransferform?c_number=${sList.c_number}">현금에서 계좌로<a>
-	<a href="/dtransferform?c_number=${dList.c_number}">카드 선결제</a>
+<div class="text-end"> <!-- onclick으로 변경할 수 있을까? 버튼 방식으로 해서. -->
+	<a href="/atransferform?c_number=${aList.c_number}&a_number=${aList.a_number}">계좌에서 계좌로</a>
+	<a href="/stransferform?c_number=${sList.c_number}&a_number=${aList.a_number}">현금에서 계좌로<a>
+	<a href="/dtransferform?a_number=${aList.a_number}&d_number=${dList.d_number}">카드 선결제</a>
 </div>
 </section>
 </body>

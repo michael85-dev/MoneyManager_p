@@ -35,9 +35,17 @@
 	<a href="/dtransferform?c_number=${dList.c_number}">카드 선결제</a>
 </div>
 <div>
+	<select>
+		<option disabled>선택하세요</option>
+		<option onclick="./cash/transfer?a_number=${aList.a_number}&s_number=${sList.s_number}">계좌에서 보내기</option>
+		<!-- <option value="atos">계좌에서 보내기</option> -->
+		<option value="stoa">현금에서 보내기</option>
+	</select>
+</div>
+<div>
 	<c:choose>
-		<c:when test="">
-			<form>
+		<c:when test="${a4.ai_name a}">
+			<form action="/cash/transfer?">
 				<select id="atos1">
 					<c:forEach items="${a4}" var="4">
 						<option value="${4.ai_name}">${4.ai_name}</option>

@@ -156,26 +156,43 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="atransferform", method=RequestMethod.GET)
-	public String accountTrans(@RequestParam("c_number") long c_number, Model model) {
+	public String accountTrans(@RequestParam("c_number") long c_number, Model model, @RequestParam("a_number") long a_number) {
 		// 계좌 리스트 불러올 2개를 가지고 와야함. 다만 해당 값에 대해서는. ai_number로 명명 되어야 함. 어떻게 가지고 와야할까?
 		List<AccountInfoDTO> a1 = ais.findAll(a_number);
+		model.addAttribute("a1", a1);
 		
 		List<AccountInfoDTO> a2 = ais.findAll(a_number);
+		model.addAttribute("a2", a2);
+		
 		return "/account/transform";
 	}
 	
 	@RequestMapping(value="stransferform", method=RequestMethod.GET)
-	public String cashTrans(@RequestParam("c_number") long c_number, Model model) {
+	public String cashTrans(@RequestParam("c_number") long c_number, Model model, @RequestParam("a_number") long a_number) {
 		List<AccountInfoDTO> a4 = ais.findAll(a_number);
-		List<CashInfoDTO> s1 = sis.findAll(s_number);
+		model.addAttribute("a4", a4);
+		
+		List<CashInfoDTO> s1 = sis.findAll(c_number);
+		model.addAttribute("s1", s1);
 		
 		return "/cash/transform";
 	}
 	@RequestMapping(value="dtransferform", method=RequestMethod.GET)
-	public String cardTrans(@RequestParam("c_number") long c_number, Model model) {
+	public String cardTrans(@RequestParam("c_number") long c_number, Model model, @RequestParam("a_number") long a_number, @RequestParam("d_number") long d_number) {
 		List<AccountInfoDTO> a3 = ais.findAll(a_number);
+		model.addAttribute("a3", a3);
+		
 		List<CardInfoDTO> d1 = dis.findAll(d_number);
+		model.addAttribute("d1", d1);
+		
 		return "/card/transform";
+	}
+	
+	@RequestMapping(value="transfer", method=RequestMethod.GET)
+	public String tranfer(@RequestParam("c_number") long c_number, Model model) {
+		
+		
+		return "/transfer";
 	}
 	
 }
