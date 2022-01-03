@@ -22,4 +22,8 @@ public interface AccountInfoService {
 
 	void update(AccountInfoDTO aiDTO, long a_number) throws IllegalStateException, IOException;
 
+	void send(long a1_number, AccountInfoDTO aiDTO);
+
+	void receive(long a2_number, AccountInfoDTO aiDTO);
+
 }

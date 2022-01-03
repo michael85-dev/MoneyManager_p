@@ -35,13 +35,13 @@
 	<a href="/dtransferform?c_number=${dList.c_number}">카드 선결제</a>
 </div>
 <div>
-	<form>
+	<form action="/accountinfo/transfer?a_number1=${a1.a_number}&a_number2=${a2.a_number}" method="post">
 		보내는 계좌 : <select id="atoa1">
 			<c:forEach items="${a1}" var="1">
 				<option value="${1.ai_name}">${1.ai_name}</option>
 			</c:forEach>
 		</select>
-		<input type="text" id="send">
+		<input type="text" id="send" name="ai_mAsset">
 		<input type="text" name="ai_pAsset">
 	</form>
 	

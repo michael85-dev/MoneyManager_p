@@ -76,4 +76,12 @@ public class AccountInfoController {
 		
 		return "accountinfo/findAll";
 	}
+	
+	@RequestMapping(value="transfer", method=RequestMethod.POST)
+	public String transfer(@RequestParam("a_number1") long a1_number, Model model, @RequestParam("a_number2") long a2_number ,@ModelAttribute AccountInfoDTO aiDTO) {
+		ais.send(a1_number, aiDTO);
+		ais.receive(a2_number, aiDTO);
+		
+		return "/main";
+	}
 }

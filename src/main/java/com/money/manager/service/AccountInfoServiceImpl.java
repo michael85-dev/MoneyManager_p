@@ -131,4 +131,16 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 		air.update(aiDTO);
 	}
 
+	@Override
+	public void send(long a1_number, AccountInfoDTO aiDTO) {
+		// TODO Auto-generated method stub
+		long asset = aiDTO.getAi_mAsset;
+	}
+
+	@Override
+	public void receive(long a2_number, AccountInfoDTO aiDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
